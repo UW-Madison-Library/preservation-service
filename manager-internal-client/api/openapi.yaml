@@ -1,0 +1,2269 @@
+openapi: 3.0.0
+info:
+  description: Internal API for the Preservation Manager.
+  title: Preservation Manager Internal API
+  version: 1.0.0
+servers:
+- description: Local server
+  url: http://localhost:8484/internal/api
+security:
+- basicAuth: []
+tags:
+- description: Internal Preservation Manager operations
+  name: ManagerInternal
+paths:
+  /batch/{ingestId}:
+    get:
+      operationId: retrieveBatch
+      parameters:
+      - description: The ID for the Ingest Batch
+        example: 10293
+        in: path
+        name: ingestId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveBatchResponse'
+          description: Ingest Batch details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves Ingest Batch details
+      tags:
+      - ManagerInternal
+      x-accepts: application/json
+  /batch/{ingestId}/ingest:
+    get:
+      operationId: retrieveBatchIngest
+      parameters:
+      - description: The ID for the Ingest Batch
+        example: 10293
+        in: path
+        name: ingestId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveBatchIngestResponse'
+          description: Ingest Batch details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves all of the details about batch objects that are ready for
+        ingest
+      tags:
+      - ManagerInternal
+      x-accepts: application/json
+  /batch/startAnalysis:
+    post:
+      operationId: batchStartAnalysis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchStartAnalysisRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Transitions a batch into an analysis state
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/completeAnalysis:
+    post:
+      operationId: batchCompleteAnalysis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchCompleteAnalysisRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Transitions a batch out of an analysis state
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/startRejecting:
+    post:
+      operationId: batchStartRejecting
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchStartRejectingRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Transitions a batch into a rejecting state
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/completeRejecting:
+    post:
+      operationId: batchCompleteRejecting
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchCompleteRejectingRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Transitions a batch out of a rejecting state
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/startIngesting:
+    post:
+      operationId: batchStartIngesting
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchStartIngestingRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Transitions a batch into an ingesting state
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/completeIngesting:
+    post:
+      operationId: batchCompleteIngesting
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchCompleteIngestingRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Transitions a batch out of an ingesting state
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/markDeleted:
+    post:
+      operationId: batchMarkDeleted
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchMarkDeletedRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Transitions a batch to a deleted state
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/object:
+    post:
+      operationId: registerIngestObject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterIngestObjectRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterIngestObjectResponse'
+          description: Register ingest object response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Registers an object to a batch
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/object/file:
+    post:
+      operationId: registerIngestObjectFile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterIngestObjectFileRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterIngestObjectFileResponse'
+          description: Register ingest object file response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Registers a file to an object in a batch
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/object/file/details:
+    post:
+      operationId: registerIngestObjectFileDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterIngestObjectFileDetailsRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Adds details to an ingest object file
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/object/completeAnalysis:
+    post:
+      operationId: objectCompleteAnalysis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectCompleteAnalysisRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Transitions a batch out of an analysis state
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/object/startIngesting:
+    post:
+      operationId: objectStartIngesting
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectStartIngestingRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Transitions a batch into an ingesting state
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/object/completeIngesting:
+    post:
+      operationId: objectCompleteIngesting
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectCompleteIngestingRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Transitions a batch out of an ingesting state
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/event:
+    post:
+      operationId: recordIngestEvent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordIngestEventRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Record ingest event
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/shouldDelete:
+    post:
+      operationId: shouldDeleteBatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShouldDeleteBatchRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShouldDeleteBatchResponse'
+          description: Indicates if the batch should be deleted
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Check if the batch is old and should be deleted
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /object/version:
+    delete:
+      operationId: deleteObjectVersion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteObjectVersionRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Deletes a preservation object version
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+    put:
+      operationId: createObjectVersion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateObjectVersionRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateObjectVersionResponse'
+          description: Details about the new version
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Creates a new version of a preservation object
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /object/version/finalize:
+    post:
+      operationId: finalizeObjectVersion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinalizeObjectVersionRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Finalizes the creation of a new object version and sets it to HEAD
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /object/version/replicated:
+    post:
+      operationId: objectVersionReplicated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectVersionReplicatedRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Marks an object version as being replicated to a data store
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /object/premis:
+    get:
+      operationId: getPremisDocument
+      parameters:
+      - description: The internal ID of the object
+        example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+        in: query
+        name: internalObjectId
+        required: true
+        schema:
+          type: string
+      - description: List of versions to include in PREMIS
+        explode: true
+        in: query
+        name: versionNumbers
+        required: true
+        schema:
+          items:
+            format: int32
+            type: integer
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/xml:
+              schema:
+                format: binary
+                type: string
+          description: Success
+      summary: Generates a PREMIS document for the object
+      tags:
+      - ManagerInternal
+      x-accepts: application/xml
+  /object/{internalObjectId}/versionStates:
+    get:
+      operationId: getObjectVersionStates
+      parameters:
+      - description: The internal ID of the object
+        example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+        in: path
+        name: internalObjectId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeObjectVersionStatesResponse'
+          description: Details about the state of every version of an object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Describes the version state of every version of an object
+      tags:
+      - ManagerInternal
+      x-accepts: application/json
+  /object/{internalObjectId}/persistenceVersion/{persistenceVersion}/filesNewInVersion:
+    get:
+      operationId: retrieveNewInVersionFiles
+      parameters:
+      - description: The internal ID of the object
+        example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+        in: path
+        name: internalObjectId
+        required: true
+        schema:
+          type: string
+      - description: The version identifier of the object version
+        example: v2
+        in: path
+        name: persistenceVersion
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveNewInVersionFilesResponse'
+          description: Files new to the object in the specified version
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves a list of all of the files that were introduced to the object
+        in the specified persistence version
+      tags:
+      - ManagerInternal
+      x-accepts: application/json
+  /object/problems/storage:
+    get:
+      operationId: getObjectStorageProblems
+      parameters:
+      - description: The internal ID of the object
+        example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+        in: query
+        name: internalObjectId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetObjectStorageProblemsResponse'
+          description: The object's storage problems, if any
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves details about what storage problems are affecting an object
+      tags:
+      - ManagerInternal
+      x-accepts: application/json
+    put:
+      operationId: setObjectStorageProblems
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetObjectStorageProblemsRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Sets an object's storage problems
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /object/event:
+    post:
+      operationId: recordPreservationEvent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordPreservationEventRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Record preservation event
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /job/state:
+    post:
+      operationId: updateJobState
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateJobStateRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Updates the state of a job
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /job/defer:
+    post:
+      operationId: defer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeferJobRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Defers a job if it is not ready to be processed
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /job/logs:
+    post:
+      operationId: recordJobLogs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordJobLogsRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Adds logs to a job
+      tags:
+      - ManagerInternal
+      x-contentType: application/json
+      x-accepts: application/json
+  /job/poll:
+    get:
+      operationId: pollForJob
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobPollResponse'
+          description: A job to process
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Long poll for a job to process
+      tags:
+      - ManagerInternal
+      x-accepts: application/json
+components:
+  schemas:
+    Job:
+      properties:
+        jobId:
+          description: The id of a job
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - jobId
+    FinalizeRestoreJob:
+      allOf:
+      - $ref: '#/components/schemas/Job'
+      - $ref: '#/components/schemas/FinalizeRestoreJob_allOf'
+    ProcessBatchJob:
+      allOf:
+      - $ref: '#/components/schemas/Job'
+      - $ref: '#/components/schemas/ProcessBatchJob_allOf'
+    ReplicateJob:
+      allOf:
+      - $ref: '#/components/schemas/Job'
+      - $ref: '#/components/schemas/ReplicateJob_allOf'
+    RestoreJob:
+      allOf:
+      - $ref: '#/components/schemas/Job'
+      - $ref: '#/components/schemas/RestoreJob_allOf'
+    ObjectInfo:
+      properties:
+        internalId:
+          description: The internal ID of the object
+          example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          type: string
+        externalId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        version:
+          description: The version of an object
+          example: 1
+          format: int32
+          type: integer
+        persistenceVersion:
+          description: The version identifier of the object version
+          example: v2
+          type: string
+    RetrieveJob:
+      allOf:
+      - $ref: '#/components/schemas/Job'
+      - $ref: '#/components/schemas/RetrieveJob_allOf'
+    ValidateLocalJob:
+      allOf:
+      - $ref: '#/components/schemas/Job'
+      - $ref: '#/components/schemas/ValidateLocalJob_allOf'
+    ValidateRemoteJob:
+      allOf:
+      - $ref: '#/components/schemas/Job'
+      - $ref: '#/components/schemas/ValidateRemoteJob_allOf'
+    DeleteDipJob:
+      allOf:
+      - $ref: '#/components/schemas/Job'
+      - $ref: '#/components/schemas/DeleteDipJob_allOf'
+    CleanupSipsJob:
+      allOf:
+      - $ref: '#/components/schemas/Job'
+      - type: object
+    JobPollResponse:
+      example: {}
+      properties:
+        jobType:
+          $ref: '#/components/schemas/JobType'
+        finalizeRestoreJob:
+          $ref: '#/components/schemas/FinalizeRestoreJob'
+        processBatchJob:
+          $ref: '#/components/schemas/ProcessBatchJob'
+        replicateJob:
+          $ref: '#/components/schemas/ReplicateJob'
+        restoreJob:
+          $ref: '#/components/schemas/RestoreJob'
+        retrieveJob:
+          $ref: '#/components/schemas/RetrieveJob'
+        validateLocalJob:
+          $ref: '#/components/schemas/ValidateLocalJob'
+        validateRemoteJob:
+          $ref: '#/components/schemas/ValidateRemoteJob'
+        deleteDipJob:
+          $ref: '#/components/schemas/DeleteDipJob'
+        cleanupSipsJob:
+          $ref: '#/components/schemas/CleanupSipsJob'
+    RetrieveBatchResponse:
+      example:
+        ingestBatch:
+          orgName: organization-id
+          hasAnalysisWarnings: true
+          receivedTimestamp: 2018-12-27T20:50:06.907193Z
+          filePath: /var/tmp/bag.zip
+          reviewedBy: reviewedBy
+          updatedTimestamp: 2018-12-27T20:50:09.189558Z
+          ingestId: 10293
+          createdBy: createdBy
+          fileSize: 1024
+          hasAnalysisErrors: true
+          vault: vault-name
+          originalFilename: bag.zip
+      properties:
+        ingestBatch:
+          $ref: '#/components/schemas/IngestBatch'
+      required:
+      - ingestBatch
+    RegisterIngestObjectRequest:
+      example:
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        objectRootPath: /data/processing/obj123
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        objectRootPath:
+          description: The path to the object root on disk
+          example: /data/processing/obj123
+          type: string
+      required:
+      - externalObjectId
+      - ingestId
+      - objectRootPath
+    RegisterIngestObjectResponse:
+      example:
+        ingestObjectId: 10293
+      properties:
+        ingestObjectId:
+          description: The ID of the object within the batch
+          example: 10293
+          format: int64
+          type: integer
+    RegisterIngestObjectFileRequest:
+      example:
+        filePath: path/to/file.txt
+        ingestObjectId: 10293
+      properties:
+        ingestObjectId:
+          description: The ID of the object within the batch
+          example: 10293
+          format: int64
+          type: integer
+        filePath:
+          description: The object relative path of the file
+          example: path/to/file.txt
+          type: string
+      required:
+      - filePath
+      - ingestObjectId
+    RegisterIngestObjectFileResponse:
+      example:
+        ingestFileId: 10293
+      properties:
+        ingestFileId:
+          description: The ID of the file
+          example: 10293
+          format: int64
+          type: integer
+    RegisterIngestObjectFileDetailsRequest:
+      example:
+        formats:
+        - format: application/xml
+          source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+        - format: application/xml
+          source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+        fileSize: 1024
+        validity:
+        - valid: true
+          wellFormed: true
+          source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+        - valid: true
+          wellFormed: true
+          source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+        sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+        encoding:
+        - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+          encoding: utf-8
+        - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+          encoding: utf-8
+        ingestFileId: 10293
+      properties:
+        ingestFileId:
+          description: The ID of the file
+          example: 10293
+          format: int64
+          type: integer
+        sha256Digest:
+          description: The sha256 digest of the file
+          example: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          type: string
+        fileSize:
+          description: Size of the file in bytes
+          example: 1024
+          format: int64
+          type: integer
+        formats:
+          description: The format of the file
+          items:
+            $ref: '#/components/schemas/FileFormat'
+          type: array
+        encoding:
+          description: The encoding of the file
+          items:
+            $ref: '#/components/schemas/FileEncoding'
+          type: array
+        validity:
+          description: The validity of the file
+          items:
+            $ref: '#/components/schemas/FileValidity'
+          type: array
+      required:
+      - fileSize
+      - ingestFileId
+      - sha256Digest
+    BatchObjectWithFiles:
+      description: An object within an Ingest Batch
+      example:
+        ingestObjectId: 10293
+        internalObjectId: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+        files:
+        - fileSize: 1024
+          filePath: path/to/file.txt
+          sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+        - fileSize: 1024
+          filePath: path/to/file.txt
+          sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        approverAddress: person@example.com
+        objectRootPath: /data/processing/obj123
+        headPersistenceVersion: v2
+        ingestId: 10293
+        approverName: approverName
+      properties:
+        ingestObjectId:
+          description: The ID of the object within the batch
+          example: 10293
+          format: int64
+          type: integer
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        objectRootPath:
+          description: The path to the object root on disk
+          example: /data/processing/obj123
+          type: string
+        state:
+          $ref: '#/components/schemas/IngestObjectState'
+        internalObjectId:
+          description: The internal ID of the object
+          example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          type: string
+        headPersistenceVersion:
+          description: The version identifier of the object version
+          example: v2
+          type: string
+        approverName:
+          description: The display name of the user who approved the object
+          type: string
+        approverAddress:
+          description: The address or id of the user who approved the object, should
+            be a URI
+          example: person@example.com
+          type: string
+        files:
+          description: The files associated to the object
+          items:
+            $ref: '#/components/schemas/ObjectFile'
+          type: array
+      type: object
+    ObjectFile:
+      description: A file within an object within an Ingest Batch
+      example:
+        fileSize: 1024
+        filePath: path/to/file.txt
+        sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+      properties:
+        filePath:
+          description: The object relative path of the file
+          example: path/to/file.txt
+          type: string
+        sha256Digest:
+          description: The sha256 digest of the file
+          example: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          type: string
+        fileSize:
+          description: Size of the file in bytes
+          example: 1024
+          format: int64
+          type: integer
+      type: object
+    ObjectVersionState:
+      description: Describes the state of an object at a specific version
+      example:
+        state:
+          key:
+            fileSize: 1024
+            sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+        version: 1
+        persistenceVersion: v2
+      properties:
+        version:
+          description: The version of an object
+          example: 1
+          format: int32
+          type: integer
+        persistenceVersion:
+          description: The version identifier of the object version
+          example: v2
+          type: string
+        state:
+          additionalProperties:
+            $ref: '#/components/schemas/ObjectVersionState_state'
+          description: The files in the version
+          type: object
+      type: object
+    DescribeObjectVersionStatesResponse:
+      example:
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        vault: vault-name
+        versionStates:
+        - state:
+            key:
+              fileSize: 1024
+              sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          version: 1
+          persistenceVersion: v2
+        - state:
+            key:
+              fileSize: 1024
+              sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          version: 1
+          persistenceVersion: v2
+      properties:
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        versionStates:
+          description: List of all of the version states of the object
+          items:
+            $ref: '#/components/schemas/ObjectVersionState'
+          type: array
+      required:
+      - versionStates
+    CreateObjectVersionRequest:
+      example:
+        ingestObjectId: 10293
+        objectId: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+      properties:
+        objectId:
+          description: The internal ID of the object
+          example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          type: string
+        ingestObjectId:
+          description: The ID of the object within the batch
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - ingestObjectId
+      - objectId
+    CreateObjectVersionResponse:
+      example:
+        objectVersionId: 10293
+        version: 1
+        objectId: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+      properties:
+        objectId:
+          description: The internal ID of the object
+          example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          type: string
+        version:
+          description: The version of an object
+          example: 1
+          format: int32
+          type: integer
+        objectVersionId:
+          description: The internal ID of a version of an object
+          example: 10293
+          format: int64
+          type: integer
+    DeleteObjectVersionRequest:
+      example:
+        objectVersionId: 10293
+      properties:
+        objectVersionId:
+          description: The internal ID of a version of an object
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - objectVersionId
+    FinalizeObjectVersionRequest:
+      example:
+        objectVersionId: 10293
+        ingestObjectId: 10293
+        persistenceVersion: v2
+      properties:
+        objectVersionId:
+          description: The internal ID of a version of an object
+          example: 10293
+          format: int64
+          type: integer
+        ingestObjectId:
+          description: The ID of the object within the batch
+          example: 10293
+          format: int64
+          type: integer
+        persistenceVersion:
+          description: The version identifier of the object version
+          example: v2
+          type: string
+      required:
+      - objectVersionId
+      - persistenceVersion
+    ObjectVersionReplicatedRequest:
+      example:
+        sha256Digest: sha256Digest
+        persistenceVersion: v2
+        dataStoreKey: dataStoreKey
+        objectId: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+      properties:
+        objectId:
+          description: The internal ID of the object
+          example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          type: string
+        persistenceVersion:
+          description: The version identifier of the object version
+          example: v2
+          type: string
+        dataStore:
+          $ref: '#/components/schemas/DataStore'
+        dataStoreKey:
+          description: The key the version is stored at in the datastore
+          type: string
+        sha256Digest:
+          description: The lowercase, hex encoded sha256 digest of the archive
+          type: string
+      required:
+      - dataStore
+      - dataStoreKey
+      - objectVersionId
+      - sha256Digest
+    RecordIngestEventRequest:
+      example:
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        event:
+          agent: preservation-worker-1.0.0
+          logs:
+          - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+            message: Something went wrong
+          - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+            message: Something went wrong
+          username: username
+          eventTimestamp: 2000-01-23T04:56:07.000+00:00
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        event:
+          $ref: '#/components/schemas/Event'
+      required:
+      - event
+      - ingestId
+    RecordPreservationEventRequest:
+      example:
+        event:
+          agent: preservation-worker-1.0.0
+          logs:
+          - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+            message: Something went wrong
+          - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+            message: Something went wrong
+          username: username
+          eventTimestamp: 2000-01-23T04:56:07.000+00:00
+        objectId: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+      properties:
+        objectId:
+          description: The internal ID of the object
+          example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          type: string
+        event:
+          $ref: '#/components/schemas/Event'
+      required:
+      - event
+      - objectId
+    UpdateJobStateRequest:
+      example:
+        jobId: 10293
+      properties:
+        jobId:
+          description: The id of a job
+          example: 10293
+          format: int64
+          type: integer
+        state:
+          $ref: '#/components/schemas/JobState'
+      required:
+      - jobId
+      - state
+    DeferJobRequest:
+      example:
+        jobId: 10293
+        nextAttemptTimestamp: 2018-12-27T20:50:09.189558Z
+      properties:
+        jobId:
+          description: The id of a job
+          example: 10293
+          format: int64
+          type: integer
+        nextAttemptTimestamp:
+          description: UTC timestamp when the next processing attempt will be made
+          example: 2018-12-27T20:50:09.189558Z
+          format: date-time
+          type: string
+      required:
+      - jobId
+      - state
+    RetrieveBatchIngestResponse:
+      example:
+        approvedObjects:
+        - ingestObjectId: 10293
+          internalObjectId: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          files:
+          - fileSize: 1024
+            filePath: path/to/file.txt
+            sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          - fileSize: 1024
+            filePath: path/to/file.txt
+            sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+          approverAddress: person@example.com
+          objectRootPath: /data/processing/obj123
+          headPersistenceVersion: v2
+          ingestId: 10293
+          approverName: approverName
+        - ingestObjectId: 10293
+          internalObjectId: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          files:
+          - fileSize: 1024
+            filePath: path/to/file.txt
+            sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          - fileSize: 1024
+            filePath: path/to/file.txt
+            sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+          approverAddress: person@example.com
+          objectRootPath: /data/processing/obj123
+          headPersistenceVersion: v2
+          ingestId: 10293
+          approverName: approverName
+      properties:
+        approvedObjects:
+          description: Objects that need to be ingested
+          items:
+            $ref: '#/components/schemas/BatchObjectWithFiles'
+          type: array
+      required:
+      - approvedObjects
+    VersionStorageProblem:
+      example:
+        persistenceVersion: v2
+      properties:
+        persistenceVersion:
+          description: The version identifier of the object version
+          example: v2
+          type: string
+        problem:
+          $ref: '#/components/schemas/StorageProblemType'
+      required:
+      - persistenceVersion
+      - problem
+    SetObjectStorageProblemsRequest:
+      example:
+        versionProblems:
+        - persistenceVersion: v2
+        - persistenceVersion: v2
+        objectId: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+      properties:
+        objectId:
+          description: The internal ID of the object
+          example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          type: string
+        dataStore:
+          $ref: '#/components/schemas/DataStore'
+        objectProblem:
+          $ref: '#/components/schemas/StorageProblemType'
+        versionProblems:
+          description: Storage problems for specific versions
+          items:
+            $ref: '#/components/schemas/VersionStorageProblem'
+          type: array
+      required:
+      - dataStore
+      - objectId
+    RecordJobLogsRequest:
+      example:
+        logEntries:
+        - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+          message: Something went wrong
+        - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+          message: Something went wrong
+        jobId: 10293
+      properties:
+        jobId:
+          description: The id of a job
+          example: 10293
+          format: int64
+          type: integer
+        logEntries:
+          description: Job log entries
+          items:
+            $ref: '#/components/schemas/LogEntry'
+          type: array
+    RetrieveNewInVersionFilesResponse:
+      example:
+        files:
+        - fileSize: 1024
+          filePath: path/to/file.txt
+          sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+        - fileSize: 1024
+          filePath: path/to/file.txt
+          sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+      properties:
+        files:
+          description: Files that were introduced into the object in the specified
+            version
+          items:
+            $ref: '#/components/schemas/ObjectFile'
+          type: array
+      required:
+      - files
+    Outcome:
+      description: Indicates if the action was a success or a failure
+      enum:
+      - SUCCESS
+      - FAILURE
+      example: SUCCESS
+      type: string
+    BatchStartAnalysisRequest:
+      example:
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - ingestId
+    BatchCompleteAnalysisRequest:
+      example:
+        ingestId: 10293
+        outcome: SUCCESS
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        outcome:
+          $ref: '#/components/schemas/Outcome'
+      required:
+      - ingestId
+      - outcome
+    BatchStartRejectingRequest:
+      example:
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - ingestId
+    BatchCompleteRejectingRequest:
+      example:
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - ingestId
+    BatchStartIngestingRequest:
+      example:
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - ingestId
+    BatchCompleteIngestingRequest:
+      example:
+        ingestId: 10293
+        outcome: SUCCESS
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        outcome:
+          $ref: '#/components/schemas/Outcome'
+      required:
+      - ingestId
+      - outcome
+    BatchMarkDeletedRequest:
+      example:
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - ingestId
+    ObjectCompleteAnalysisRequest:
+      example:
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        ingestId: 10293
+        outcome: SUCCESS
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        outcome:
+          $ref: '#/components/schemas/Outcome'
+      required:
+      - externalObjectId
+      - ingestId
+      - outcome
+    ObjectStartIngestingRequest:
+      example:
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+      required:
+      - externalObjectId
+      - ingestId
+    ObjectCompleteIngestingRequest:
+      example:
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        ingestId: 10293
+        outcome: SUCCESS
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        outcome:
+          description: Indicates if the action was a success or a failure
+          enum:
+          - SUCCESS
+          - FAILURE
+          - NO_CHANGE
+          example: SUCCESS
+          type: string
+      required:
+      - externalObjectId
+      - ingestId
+      - outcome
+    ShouldDeleteBatchRequest:
+      example:
+        sipPath: /preservation/upload/sip.zip
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        sipPath:
+          description: The path to the SIP in the upload dir
+          example: /preservation/upload/sip.zip
+          type: string
+    ShouldDeleteBatchResponse:
+      example:
+        verdict: KEEP
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        verdict:
+          description: Indicates if the batch should be kept or deleted
+          enum:
+          - KEEP
+          - DELETE
+          - NOT_FOUND
+          example: KEEP
+          type: string
+    GetObjectStorageProblemsResponse:
+      example:
+        problems:
+        - reportedTimestamp: 2000-01-23T04:56:07.000+00:00
+          persistenceVersion: v2
+        - reportedTimestamp: 2000-01-23T04:56:07.000+00:00
+          persistenceVersion: v2
+      properties:
+        problems:
+          description: List of problems
+          items:
+            $ref: '#/components/schemas/ObjectStorageProblem'
+          type: array
+    ErrorResponse:
+      properties:
+        timestamp:
+          description: Timestamp when the error occurred
+          format: date-time
+          type: string
+        requestId:
+          description: UUID assigned to the request
+          example: 6037de0a4b2e4611956da540938a00ff
+          type: string
+        status:
+          description: HTTP status code
+          example: 500
+          format: int32
+          type: integer
+        error:
+          description: Application classification of the error
+          type: string
+        message:
+          description: Description of the error
+          example: Invalid input
+          type: string
+        path:
+          description: Request path
+          example: /api/ingest/bag
+          type: string
+      required:
+      - error
+      - message
+      - path
+      - requestId
+      - status
+      - timestamp
+    JobId:
+      description: The id of a job
+      example: 10293
+      format: int64
+      type: integer
+    InternalObjectId:
+      description: The internal ID of the object
+      example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+      type: string
+    IngestId:
+      description: The ID for the Ingest Batch
+      example: 10293
+      format: int64
+      type: integer
+    Vault:
+      description: The name of the vault
+      example: vault-name
+      type: string
+    ExternalObjectId:
+      description: The external ID of the object
+      example: 1711.dl/ZQ5WPGU2GKBFT8Q
+      type: string
+    PersistenceVersion:
+      description: The version identifier of the object version
+      example: v2
+      type: string
+    DataStore:
+      description: A data store location
+      enum:
+      - IBM_COS
+      - GLACIER
+      type: string
+    Sha256Digest:
+      description: The sha256 digest of the file
+      example: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+      type: string
+    Version:
+      description: The version of an object
+      example: 1
+      format: int32
+      type: integer
+    JobType:
+      description: Type of job
+      enum:
+      - RETRIEVE_OBJECTS
+      - REPLICATE
+      - RESTORE
+      - FINALIZE_RESTORE
+      - VALIDATE_LOCAL
+      - PROCESS_BATCH
+      - VALIDATE_REMOTE
+      - DELETE_DIP
+      - CLEANUP_SIPS
+      type: string
+    IngestBatch:
+      description: Ingest Batch details
+      example:
+        orgName: organization-id
+        hasAnalysisWarnings: true
+        receivedTimestamp: 2018-12-27T20:50:06.907193Z
+        filePath: /var/tmp/bag.zip
+        reviewedBy: reviewedBy
+        updatedTimestamp: 2018-12-27T20:50:09.189558Z
+        ingestId: 10293
+        createdBy: createdBy
+        fileSize: 1024
+        hasAnalysisErrors: true
+        vault: vault-name
+        originalFilename: bag.zip
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        orgName:
+          description: The ID of the organization
+          example: organization-id
+          type: string
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        createdBy:
+          description: The username of the user who submitted the batch
+          type: string
+        reviewedBy:
+          description: The username of the user who approved/rejected the batch object
+          type: string
+        state:
+          $ref: '#/components/schemas/IngestBatchState'
+        originalFilename:
+          description: The name of the file as uploaded
+          example: bag.zip
+          type: string
+        filePath:
+          description: Path the batch's archive on disk
+          example: /var/tmp/bag.zip
+          type: string
+        fileSize:
+          description: Bag size in bytes
+          example: 1024
+          format: int64
+          type: integer
+        hasAnalysisErrors:
+          description: Indicates if there were errors during analysis
+          example: true
+          type: boolean
+        hasAnalysisWarnings:
+          description: Indicates if there were warnings during analysis
+          example: true
+          type: boolean
+        receivedTimestamp:
+          description: UTC timestamp when the batch was received
+          example: 2018-12-27T20:50:06.907193Z
+          format: date-time
+          type: string
+        updatedTimestamp:
+          description: UTC timestamp when the batch was last updated
+          example: 2018-12-27T20:50:09.189558Z
+          format: date-time
+          type: string
+      required:
+      - createdBy
+      - ingestId
+      - orgName
+      - receivedTimestamp
+      - state
+      - type
+      - vault
+      type: object
+    OrgName:
+      description: The ID of the organization
+      example: organization-id
+      type: string
+    ReviewedBy:
+      description: The username of the user who approved/rejected the batch object
+      type: string
+    IngestBatchState:
+      description: The state of an Ingest Batch
+      enum:
+      - RECEIVED
+      - ANALYZING
+      - ANALYSIS_FAILED
+      - PENDING_REVIEW
+      - PENDING_INGESTION
+      - PENDING_REJECTION
+      - INGESTING
+      - INGEST_FAILED
+      - REPLICATING
+      - REPLICATION_FAILED
+      - COMPLETE
+      - REJECTING
+      - REJECTED
+      - DELETED
+      type: string
+    AnalysisErrors:
+      description: Indicates if there were errors during analysis
+      example: true
+      type: boolean
+    AnalysisWarnings:
+      description: Indicates if there were warnings during analysis
+      example: true
+      type: boolean
+    IngestObjectId:
+      description: The ID of the object within the batch
+      example: 10293
+      format: int64
+      type: integer
+    FilePath:
+      description: The object relative path of the file
+      example: path/to/file.txt
+      type: string
+    IngestFileId:
+      description: The ID of the file
+      example: 10293
+      format: int64
+      type: integer
+    FileSize:
+      description: Size of the file in bytes
+      example: 1024
+      format: int64
+      type: integer
+    FileFormat:
+      description: File format of a file
+      example:
+        format: application/xml
+        source: USER when specified by the user; otherwise tool id, eg Droid-6.4 when
+          identified by Droid
+      properties:
+        formatRegistry:
+          $ref: '#/components/schemas/FormatRegistry'
+        format:
+          description: The ID of the file format within the registry
+          example: application/xml
+          type: string
+        source:
+          description: The source of the identification
+          example: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+          type: string
+      required:
+      - format
+      - formatRegistry
+      - source
+      type: object
+    FormatRegistry:
+      description: Registry of format identifiers
+      enum:
+      - MIME
+      - PRONOM
+      type: string
+    FileFormatName:
+      description: The ID of the file format within the registry
+      example: application/xml
+      type: string
+    IdentificationSource:
+      description: The source of the identification
+      example: USER when specified by the user; otherwise tool id, eg Droid-6.4 when
+        identified by Droid
+      type: string
+    FileEncoding:
+      description: Encoding for a file
+      example:
+        source: USER when specified by the user; otherwise tool id, eg Droid-6.4 when
+          identified by Droid
+        encoding: utf-8
+      properties:
+        encoding:
+          description: The file encoding
+          example: utf-8
+          type: string
+        source:
+          description: The source of the identification
+          example: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+          type: string
+      required:
+      - encoding
+      - source
+      type: object
+    FileEncodingName:
+      description: The file encoding
+      example: utf-8
+      type: string
+    FileValidity:
+      description: Validity of a file
+      example:
+        valid: true
+        wellFormed: true
+        source: USER when specified by the user; otherwise tool id, eg Droid-6.4 when
+          identified by Droid
+      properties:
+        valid:
+          description: Indicates if the file is valid
+          example: true
+          type: boolean
+        wellFormed:
+          description: Indicates if the file is well formed
+          example: true
+          type: boolean
+        source:
+          description: The source of the identification
+          example: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+          type: string
+      required:
+      - source
+      type: object
+    FileValid:
+      description: Indicates if the file is valid
+      example: true
+      type: boolean
+    FileWellFormed:
+      description: Indicates if the file is well formed
+      example: true
+      type: boolean
+    IngestObjectState:
+      description: The state of an Ingest Object
+      enum:
+      - ANALYZING
+      - ANALYSIS_FAILED
+      - PENDING_REVIEW
+      - PENDING_INGESTION
+      - PENDING_REJECTION
+      - INGESTING
+      - INGESTED
+      - INGEST_FAILED
+      - NO_CHANGE
+      - REPLICATING
+      - REPLICATED
+      - REPLICATION_FAILED
+      - COMPLETE
+      - REJECTING
+      - REJECTED
+      - DELETED
+      type: string
+    ObjectVersionId:
+      description: The internal ID of a version of an object
+      example: 10293
+      format: int64
+      type: integer
+    Event:
+      example:
+        agent: preservation-worker-1.0.0
+        logs:
+        - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+          message: Something went wrong
+        - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+          message: Something went wrong
+        username: username
+        eventTimestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        username:
+          description: The username of the user responsible for the event
+          type: string
+        agent:
+          description: The software component responsible for the event
+          example: preservation-worker-1.0.0
+          type: string
+        type:
+          $ref: '#/components/schemas/EventType'
+        outcome:
+          $ref: '#/components/schemas/EventOutcome'
+        eventTimestamp:
+          description: The timestamp the event occurred
+          format: date-time
+          type: string
+        logs:
+          description: Any log entries associated with the event
+          items:
+            $ref: '#/components/schemas/LogEntry'
+          type: array
+    EventUser:
+      description: The username of the user responsible for the event
+      type: string
+    EventAgent:
+      description: The software component responsible for the event
+      example: preservation-worker-1.0.0
+      type: string
+    EventType:
+      description: The type of event
+      enum:
+      - RECEIVE_BAG
+      - VIRUS_SCAN_BAG
+      - VALIDATE_BAG
+      - IDENTIFY_OBJ
+      - IDENTIFY_FILE_FORMAT
+      - REVIEW_OBJ
+      - REVIEW_BATCH
+      - WRITE_OBJ_LOCAL
+      - CREATE_OBJ
+      - UPDATE_OBJ
+      - UPDATE_OBJ_METADATA
+      - REPLICATE_OBJ_VERSION
+      - COMPLETE_OBJ_INGEST
+      - COMPLETE_BATCH_INGEST
+      - DELETE_BAG
+      - VALIDATE_OBJ_LOCAL
+      - VALIDATE_OBJ_VERSION_LOCAL
+      - VALIDATE_OBJ_VERSION_REMOTE
+      - RESTORE_OBJ_VERSION
+      - PREPARE_DIP
+      - DELETE_OBJ
+      type: string
+    EventOutcome:
+      description: The outcome of an event
+      enum:
+      - SUCCESS
+      - FAILURE
+      - SUCCESS_WITH_WARNINGS
+      - APPROVED
+      - REJECTED
+      - NOT_EXECUTED
+      type: string
+    EventTimestamp:
+      description: The timestamp the event occurred
+      format: date-time
+      type: string
+    LogEntry:
+      example:
+        createdTimestamp: 2000-01-23T04:56:07.000+00:00
+        message: Something went wrong
+      properties:
+        level:
+          $ref: '#/components/schemas/LogLevel'
+        message:
+          description: Log entry text
+          example: Something went wrong
+          type: string
+        createdTimestamp:
+          description: The timestamp the log entry was created
+          format: date-time
+          type: string
+    LogLevel:
+      description: Log level
+      enum:
+      - INFO
+      - WARN
+      - ERROR
+      type: string
+    LogMessage:
+      description: Log entry text
+      example: Something went wrong
+      type: string
+    LogCreatedTimestamp:
+      description: The timestamp the log entry was created
+      format: date-time
+      type: string
+    JobState:
+      description: The state of a job
+      enum:
+      - PENDING
+      - EXECUTING
+      - FAILED
+      - COMPLETE
+      - CANCELLED
+      type: string
+    StorageProblemType:
+      description: Type of problem identified in the storage layer
+      enum:
+      - NONE
+      - MISSING
+      - CORRUPT
+      type: string
+    ObjectStorageProblem:
+      example:
+        reportedTimestamp: 2000-01-23T04:56:07.000+00:00
+        persistenceVersion: v2
+      properties:
+        dataStore:
+          $ref: '#/components/schemas/DataStore'
+        problem:
+          $ref: '#/components/schemas/StorageProblemType'
+        persistenceVersion:
+          description: The version identifier of the object version
+          example: v2
+          type: string
+        reportedTimestamp:
+          description: Timestamp the storage problem was identified
+          format: date-time
+          type: string
+      required:
+      - dataStore
+      - problem
+      - reportedTimestamp
+    FinalizeRestoreJob_allOf:
+      properties:
+        internalObjectId:
+          description: The internal ID of the object
+          example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          type: string
+      required:
+      - internalObjectId
+      type: object
+    ProcessBatchJob_allOf:
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - ingestId
+      type: object
+    ReplicateJob_allOf:
+      properties:
+        internalObjectId:
+          description: The internal ID of the object
+          example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          type: string
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        persistenceVersion:
+          description: The version identifier of the object version
+          example: v2
+          type: string
+        source:
+          $ref: '#/components/schemas/DataStore'
+        destination:
+          $ref: '#/components/schemas/DataStore'
+      required:
+      - destination
+      - externalObjectId
+      - internalObjectId
+      - persistenceVersion
+      - source
+      - vault
+      type: object
+    RestoreJob_allOf:
+      properties:
+        internalObjectId:
+          description: The internal ID of the object
+          example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          type: string
+        persistenceVersion:
+          description: The version identifier of the object version
+          example: v2
+          type: string
+        source:
+          $ref: '#/components/schemas/DataStore'
+        key:
+          description: The identifier of the object version in the remote store
+          example: xasdfuq3rns.zip
+          type: string
+        sha256Digest:
+          description: The sha256 digest of the file
+          example: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          type: string
+      required:
+      - internalObjectId
+      - key
+      - persistenceVersion
+      - sha256Digest
+      - source
+      type: object
+    RetrieveJob_allOf:
+      properties:
+        objects:
+          description: The ids of the objects to retrieve
+          items:
+            $ref: '#/components/schemas/ObjectInfo'
+          type: array
+      required:
+      - objects
+      type: object
+    ValidateLocalJob_allOf:
+      properties:
+        internalObjectId:
+          description: The internal ID of the object
+          example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          type: string
+        contentFixityCheck:
+          description: True if the digests of all files in the ocfl object should
+            be validated
+          example: true
+          type: boolean
+      required:
+      - contentFixityCheck
+      - internalObjectId
+      type: object
+    ValidateRemoteJob_allOf:
+      properties:
+        internalObjectId:
+          description: The internal ID of the object
+          example: urn:uuid:3c658673-38aa-4425-b931-2971c45256d3
+          type: string
+        persistenceVersion:
+          description: The version identifier of the object version
+          example: v2
+          type: string
+        dataStore:
+          $ref: '#/components/schemas/DataStore'
+        dataStoreKey:
+          description: The key the version is stored at in the datastore
+          type: string
+        sha256Digest:
+          description: The sha256 digest of the file
+          example: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          type: string
+      required:
+      - dataStore
+      - dataStoreKey
+      - internalObjectId
+      - persistenceVersion
+      - sha256Digest
+      type: object
+    DeleteDipJob_allOf:
+      properties:
+        retrieveRequestId:
+          description: The id of the retrieval request
+          example: 10293
+          format: int64
+          type: integer
+        retrieveJobIds:
+          description: The job ids that are part of the retrieve request
+          items:
+            $ref: '#/components/schemas/JobId'
+          type: array
+      required:
+      - retrieveJobIds
+      - retrieveRequestId
+      type: object
+    ObjectVersionState_state:
+      example:
+        fileSize: 1024
+        sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+      properties:
+        sha256Digest:
+          description: The sha256 digest of the file
+          example: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          type: string
+        fileSize:
+          description: Size of the file in bytes
+          example: 1024
+          format: int64
+          type: integer
+      type: object
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http
+

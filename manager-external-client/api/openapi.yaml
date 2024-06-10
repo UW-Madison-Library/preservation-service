@@ -1,0 +1,3946 @@
+openapi: 3.0.0
+info:
+  description: Public API for the Preservation Manager.
+  title: Preservation Manager Public API
+  version: 1.0.0
+servers:
+- description: Local server
+  url: http://localhost:8484/api
+security:
+- ApiKeyAuth: []
+tags:
+- description: Public PreservationManager operations
+  name: PreservationManager
+paths:
+  /ingest/bag:
+    post:
+      operationId: ingestBag
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/IngestBagRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngestBagResponse'
+          description: Ingest Batch was successfully received, but not processed yet.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Ingests the objects in a BagIt bag
+      tags:
+      - PreservationManager
+      x-contentType: multipart/form-data
+      x-accepts: application/json
+  /batch/{ingestId}:
+    get:
+      operationId: retrieveBatch
+      parameters:
+      - description: The ID for the Ingest Batch
+        example: 10293
+        in: path
+        name: ingestId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveBatchResponse'
+          description: Ingest Batch details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves Ingest Batch details
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /batch/{ingestId}/objects:
+    get:
+      operationId: retrieveBatchObjects
+      parameters:
+      - description: The ID for the Ingest Batch
+        example: 10293
+        in: path
+        name: ingestId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: The number of results to include per page (default 20)
+        example: 20
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          type: integer
+      - description: The result page to retrieve, 0 indexed
+        example: 0
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+      - description: Filter objects by the existence of errors or warnings. WARNINGS
+          returns objects that only have warnings; ERRORS returns any object that
+          has errors.
+        example: ERRORS
+        in: query
+        name: hasProblems
+        required: false
+        schema:
+          enum:
+          - NONE
+          - WARNINGS
+          - ERRORS
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveBatchObjectsResponse'
+          description: Ingest Batch Object details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves Ingest Batch Objects
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /batch/object:
+    get:
+      operationId: retrieveBatchObject
+      parameters:
+      - description: The ID for the Ingest Batch
+        example: 10293
+        in: query
+        name: ingestId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: The external ID of the object
+        example: 1711.dl/ZQ5WPGU2GKBFT8Q
+        in: query
+        name: externalObjectId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveBatchObjectResponse'
+          description: Ingest Batch Object details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves details about an Ingest Batch Object
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /batch/object/files:
+    get:
+      operationId: retrieveBatchObjectFiles
+      parameters:
+      - description: The ID for the Ingest Batch
+        example: 10293
+        in: query
+        name: ingestId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: The external ID of the object
+        example: 1711.dl/ZQ5WPGU2GKBFT8Q
+        in: query
+        name: externalObjectId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveBatchObjectFilesResponse'
+          description: Ingest Batch Object files
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves the files associated to an Ingest Batch Object
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /batch/object/file:
+    get:
+      operationId: retrieveBatchObjectFile
+      parameters:
+      - description: The ID for the Ingest Batch
+        example: 10293
+        in: query
+        name: ingestId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: The external ID of the object
+        example: 1711.dl/ZQ5WPGU2GKBFT8Q
+        in: query
+        name: externalObjectId
+        required: true
+        schema:
+          type: string
+      - description: The object relative path of the file
+        example: path/to/file.txt
+        in: query
+        name: filePath
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveBatchObjectFileResponse'
+          description: Ingest Batch Object file
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves a specific file associated to an Ingest Batch Object
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /batch/object/diff:
+    get:
+      operationId: diffBatchObject
+      parameters:
+      - description: The ID for the Ingest Batch
+        example: 10293
+        in: query
+        name: ingestId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: The external ID of the object
+        example: 1711.dl/ZQ5WPGU2GKBFT8Q
+        in: query
+        name: externalObjectId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiffBatchObjectResponse'
+          description: Batch object diff
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Diffs the batch object against the current state of the object in the
+        preservation system
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /batch/reject:
+    post:
+      operationId: rejectIngestBatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RejectIngestBatchRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Rejects a batch for ingestion
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/approve:
+    post:
+      operationId: approveIngestBatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApproveIngestBatchRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Approves a batch for ingestion
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/retryIngest:
+    post:
+      operationId: retryBatchIngest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchRetryIngestRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retries a batch ingest if it has failed
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/retryReplicate:
+    post:
+      operationId: retryBatchReplicate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchRetryReplicateRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retries a batch replicate if it has failed
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/object/approve:
+    post:
+      operationId: approveIngestObject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApproveIngestObjectRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Approves an object for ingestion
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/object/reject:
+    post:
+      operationId: rejectIngestObject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RejectIngestObjectRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Rejects an object for ingestion
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /batch/{ingestId}/event:
+    get:
+      operationId: retrieveBatchEvents
+      parameters:
+      - description: The ID for the Ingest Batch
+        example: 10293
+        in: path
+        name: ingestId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveEventsResponse'
+          description: Batch events
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves all of the events associated to the batch. This does not
+        include events associated to objects in the batch
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /batch/object/event:
+    get:
+      operationId: retrieveBatchObjectEvents
+      parameters:
+      - description: The ID for the Ingest Batch
+        example: 10293
+        in: query
+        name: ingestId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: The external ID of the object
+        example: 1711.dl/ZQ5WPGU2GKBFT8Q
+        in: query
+        name: externalObjectId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveEventsResponse'
+          description: Object events
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves all of the events associated to the object in the batch
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /batch/search:
+    get:
+      operationId: searchBatches
+      parameters:
+      - description: The ID of the organization
+        example: organization-id
+        in: query
+        name: orgName
+        required: false
+        schema:
+          type: string
+      - description: The vault an object is in
+        example: vault-name
+        explode: false
+        in: query
+        name: vault
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+      - description: The state the batch is in
+        example: PENDING_REVIEW
+        explode: false
+        in: query
+        name: state
+        required: false
+        schema:
+          items:
+            enum:
+            - RECEIVED
+            - ANALYZING
+            - ANALYSIS_FAILED
+            - PENDING_REVIEW
+            - PENDING_INGESTION
+            - PENDING_REJECTION
+            - INGESTING
+            - INGEST_FAILED
+            - REPLICATING
+            - REPLICATION_FAILED
+            - COMPLETE
+            - REJECTING
+            - REJECTED
+            - DELETED
+            type: string
+          type: array
+      - description: The number of results to include per page (default 20)
+        example: 20
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          type: integer
+      - description: The result page to retrieve, 0 indexed
+        example: 0
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchSearchResponse'
+          description: Batch search results sorted by the batch updated timestamp
+            in reverse chronological order
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Search for batches
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /vault/{orgName}:
+    get:
+      operationId: listVaults
+      parameters:
+      - description: The ID of the organization
+        example: organization-id
+        in: path
+        name: orgName
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListVaultsResponse'
+          description: List of vaults
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Lists all vaults for an organization
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /vault/{orgName}/permission:
+    get:
+      operationId: listOrgUserVaultPermissions
+      parameters:
+      - description: The ID of the organization
+        example: organization-id
+        in: path
+        name: orgName
+        required: true
+        schema:
+          type: string
+      - description: A user's username in the preservation system
+        in: query
+        name: username
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListVaultPermissionsResponse'
+          description: List of all vaults in an org along with the user's permissions
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: List all of the vaults in an org along with the user's permissions
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /vault/{vault}/user:
+    get:
+      operationId: listUsersInVault
+      parameters:
+      - description: The name of the vault
+        example: vault-name
+        in: path
+        name: vault
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListVaultUsersResponse'
+          description: List of all of the users who have access to the given vault
+            along with their permissions
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves a list of users with read or write permissions for the given
+        vault
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /vault/{vault}/describe:
+    get:
+      operationId: describeVault
+      parameters:
+      - description: The name of the vault
+        example: vault-name
+        in: path
+        name: vault
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeVaultResponse'
+          description: Details about the vault and the current user's permissions
+            in the vault
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Returns details about the vault and the current user's permissions
+        in the vault
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /vault/{vault}/problems:
+    get:
+      operationId: listVaultProblems
+      parameters:
+      - description: The name of the vault
+        example: vault-name
+        in: path
+        name: vault
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListVaultProblemsResponse'
+          description: List of objects within the vault for which storage problems
+            have been identified
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Returns a list of objects within the vault for which storage problems
+        have been identified
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /vault:
+    post:
+      operationId: createVault
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVaultRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Creates a new vault for an organization
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /vault/retrieve:
+    post:
+      operationId: retrieveObjects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetrieveObjectsRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveObjectsResponse'
+          description: The result of the retrieve request operation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Requests the retrieval of preserved objects
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /vault/retrieve/{requestId}:
+    get:
+      operationId: describeRetrieveRequest
+      parameters:
+      - description: The ID of the request
+        example: 10293
+        in: path
+        name: requestId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeRetrieveObjectsResponse'
+          description: Details about a retrieve objects request
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Describes a retrieve objects request
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /vault/retrieve/{requestId}/retry/{jobId}:
+    post:
+      operationId: retryRetrieveJob
+      parameters:
+      - description: The ID of the request
+        example: 10293
+        in: path
+        name: requestId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: The ID of the job
+        example: 10293
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retries a failed retrieve job
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /vault/retrieve/download/{jobId}:
+    get:
+      operationId: downloadJob
+      parameters:
+      - description: The ID of the job
+        example: 10293
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          content:
+            application/zip:
+              schema:
+                format: binary
+                type: string
+          description: OK
+      summary: Downloads the output of a retrieve job
+      tags:
+      - PreservationManager
+      x-accepts: application/zip
+  /object:
+    get:
+      operationId: describePreservationObject
+      parameters:
+      - description: The vault an object is in
+        example: vault-name
+        in: query
+        name: vault
+        required: true
+        schema:
+          type: string
+      - description: The external ID of the object
+        example: 1711.dl/ZQ5WPGU2GKBFT8Q
+        in: query
+        name: externalObjectId
+        required: true
+        schema:
+          type: string
+      - description: The version of an object
+        example: 1
+        in: query
+        name: version
+        required: false
+        schema:
+          format: int32
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribePreservationObjectResponse'
+          description: Details about a preservation object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves details about an object version
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /object/event:
+    get:
+      operationId: retrieveObjectEvents
+      parameters:
+      - description: The vault an object is in
+        example: vault-name
+        in: query
+        name: vault
+        required: true
+        schema:
+          type: string
+      - description: The external ID of the object
+        example: 1711.dl/ZQ5WPGU2GKBFT8Q
+        in: query
+        name: externalObjectId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveEventsResponse'
+          description: Object event logs
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves all of the events associated with an object
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /object/problems/storage:
+    get:
+      operationId: retrieveObjectStorageProblems
+      parameters:
+      - description: The vault an object is in
+        example: vault-name
+        in: query
+        name: vault
+        required: true
+        schema:
+          type: string
+      - description: The external ID of the object
+        example: 1711.dl/ZQ5WPGU2GKBFT8Q
+        in: query
+        name: externalObjectId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveObjectStorageProblemsResponse'
+          description: The object's storage problems, if any
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves details about what storage problems are affecting an object
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /object/delete:
+    post:
+      operationId: deleteObject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteObjectRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Marks the object as deleted in the database, but does not actually
+        delete any files
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /{orgName}/job:
+    get:
+      operationId: listJobs
+      parameters:
+      - description: The ID of the organization
+        example: organization-id
+        in: path
+        name: orgName
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListJobsResponse'
+          description: List of jobs
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Lists jobs
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /job/{jobId}:
+    get:
+      operationId: describeJob
+      parameters:
+      - description: The ID of the job
+        example: 10293
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeJobResponse'
+          description: Job details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Gets job details
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /job/validate:
+    post:
+      operationId: validateObject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidatePreservationObjectRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidatePreservationObjectResponse'
+          description: Validate object response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Validates the local copy of an object
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /job/validateRemote:
+    post:
+      operationId: validateObjectRemote
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateObjectRemoteRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateObjectRemoteResponse'
+          description: Validate object response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Validates a remote copy of an object
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /job/replicate:
+    post:
+      operationId: replicateObject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplicateObjectRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplicateObjectResponse'
+          description: Replicate object response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Replicates an object from local storage to a remote
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /job/restore:
+    post:
+      operationId: restoreObject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestorePreservationObjectRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestorePreservationObjectResponse'
+          description: Restore object response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Restores the local copy of an object from a remote source
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /job/executing:
+    get:
+      operationId: listExecutingJobs
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListJobsResponse'
+          description: List of jobs
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Lists jobs that have a state of EXECUTING
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /job/fail:
+    post:
+      operationId: failJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelJobRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Marks an executing job as failed. This action can only be completed
+        by a service administrator, and should only be used when a job has a state
+        of executing but is not being executed by a worker.
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /job/cancel:
+    post:
+      operationId: cancelJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelJobRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Cancels a pending job
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /job/disable:
+    post:
+      operationId: disableJobTypes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DisableJobTypesRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Disables job types from being processed
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /job/enable:
+    post:
+      operationId: enableJobTypes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnableJobTypesRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Enables job types from being processed
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /job/{jobId}/logs:
+    get:
+      operationId: retrieveJobLogs
+      parameters:
+      - description: The ID of the job
+        example: 10293
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveLogsResponse'
+          description: Ingest logs
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves all of the logs associated with a job
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /user/org:
+    get:
+      operationId: listUserOrgs
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListUserOrgsResponse'
+          description: List of organizations
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves a list of all organizations the authenticated user is an
+        active member of
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /user/vault:
+    post:
+      operationId: updateUserVaultPermissions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserVaultPermissionsRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Updates a user's permissions on a vault. Any existing permissions are
+        overwritten. An empty permission list removes all permissions for the vault.
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /org/{orgName}/user:
+    get:
+      operationId: listOrgUsers
+      parameters:
+      - description: The ID of the organization
+        example: organization-id
+        in: path
+        name: orgName
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOrgUsersResponse'
+          description: List of users in an organization
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves a list of all of the members of an organization
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /org/{orgName}:
+    get:
+      operationId: describeOrg
+      parameters:
+      - description: The ID of the organization
+        example: organization-id
+        in: path
+        name: orgName
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeOrgResponse'
+          description: Details about the specified organization and returns the current
+            user's permissions
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Describes the specified organization and returns the current user's
+        permissions
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+    post:
+      description: Service adminstrator access is required to create an organization.
+      operationId: createOrg
+      parameters:
+      - description: The ID of the organization
+        example: organization-id
+        in: path
+        name: orgName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrgRequest'
+      responses:
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Creates a new organization
+      tags:
+      - PreservationManager
+      x-contentType: application/json
+      x-accepts: application/json
+  /org/{orgName}/contact:
+    get:
+      operationId: describeOrgContact
+      parameters:
+      - description: The ID of the organization
+        example: organization-id
+        in: path
+        name: orgName
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationContactResponse'
+          description: Details about the primary contact for the organization
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Returns the primary contact for the organization.
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /user:
+    get:
+      operationId: describeUser
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeUserResponse'
+          description: User details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves details about the current user
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /system/storage:
+    get:
+      operationId: getSystemStorage
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemStorageResponse'
+          description: Retrieves system wide storage details, including a list of
+            all organizations in the system and their storage details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Retrieves system wide storage details, including a list of all organizations
+        in the system and their storage details
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /system/ingestEventCounts:
+    get:
+      operationId: getIngestEventCounts
+      parameters:
+      - description: Array of event types.
+        example: RECEIVE_BAG
+        explode: false
+        in: query
+        name: eventType
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/EventType'
+          type: array
+        style: form
+      - description: Array of event outcomes.
+        example: SUCCESS_WITH_WARNINGS
+        explode: false
+        in: query
+        name: eventOutcome
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/EventOutcome'
+          type: array
+        style: form
+      - description: The starting date for the event counts.
+        example: 2017-07-21
+        explode: true
+        in: query
+        name: startDate
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: The ending date for the event counts.
+        example: 2017-07-21
+        explode: true
+        in: query
+        name: endDate
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: The ID of the organization.
+        example: organization-id
+        explode: true
+        in: query
+        name: organizationName
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemEventCountsResponse'
+          description: System wide event counts, grouped by event outcome.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Counts of all ingest events in the system or organization if specified.
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+  /system/preservationEventCounts:
+    get:
+      operationId: getPreservationEventCounts
+      parameters:
+      - description: Array of event types.
+        example: RECEIVE_BAG
+        explode: false
+        in: query
+        name: eventType
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/EventType'
+          type: array
+        style: form
+      - description: Array of event outcomes.
+        example: SUCCESS_WITH_WARNINGS
+        explode: false
+        in: query
+        name: eventOutcome
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/EventOutcome'
+          type: array
+        style: form
+      - description: The starting date for the event counts.
+        example: 2017-07-21
+        explode: true
+        in: query
+        name: startDate
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: The ending date for the event counts.
+        example: 2017-07-21
+        explode: true
+        in: query
+        name: endDate
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: The ID of the organization.
+        example: organization-id
+        explode: true
+        in: query
+        name: organizationName
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemEventCountsResponse'
+          description: System wide event counts, grouped by event outcome.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Response returned when an operation fails.
+      summary: Counts of all preservation events in the system or organization if
+        specified.
+      tags:
+      - PreservationManager
+      x-accepts: application/json
+components:
+  schemas:
+    IngestBagRequest:
+      properties:
+        vault:
+          $ref: '#/components/schemas/Vault'
+        file:
+          description: BagIt bag containing the objects to ingest. Must be a zip file.
+          format: binary
+          type: string
+      required:
+      - file
+      - vault
+    IngestBagResponse:
+      example:
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - ingestId
+    RetrieveBatchResponse:
+      example:
+        ingestBatch:
+          orgName: organization-id
+          hasAnalysisWarnings: true
+          receivedTimestamp: 2018-12-27T20:50:06.907193Z
+          createdBy: createdBy
+          fileSize: 1024
+          hasAnalysisErrors: true
+          reviewedBy: reviewedBy
+          updatedTimestamp: 2018-12-27T20:50:09.189558Z
+          ingestId: 10293
+          vault: vault-name
+          originalFilename: bag.zip
+      properties:
+        ingestBatch:
+          $ref: '#/components/schemas/IngestBatchSummary'
+      required:
+      - ingestBatch
+    RetrieveBatchObjectsResponse:
+      example:
+        totalResults: 100
+        batchObjects:
+        - hasAnalysisWarnings: true
+          hasAnalysisErrors: true
+          externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+          reviewedBy: reviewedBy
+          version: 1
+          ingestId: 10293
+          vault: vault-name
+        - hasAnalysisWarnings: true
+          hasAnalysisErrors: true
+          externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+          reviewedBy: reviewedBy
+          version: 1
+          ingestId: 10293
+          vault: vault-name
+        totalPages: 10
+        page: 0
+      properties:
+        page:
+          description: The page number of this page, zero indexed
+          example: 0
+          type: integer
+        totalPages:
+          description: The total number of pages
+          example: 10
+          type: integer
+        totalResults:
+          description: The total number of results found
+          example: 100
+          type: integer
+        batchObjects:
+          description: The objects associated to the batch
+          items:
+            $ref: '#/components/schemas/IngestBatchObject'
+          type: array
+      required:
+      - batchObjects
+      - page
+      - totalPages
+      - totalResults
+    RetrieveBatchObjectResponse:
+      example:
+        batchObject:
+          hasAnalysisWarnings: true
+          hasAnalysisErrors: true
+          externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+          reviewedBy: reviewedBy
+          version: 1
+          ingestId: 10293
+          vault: vault-name
+      properties:
+        batchObject:
+          $ref: '#/components/schemas/IngestBatchObject'
+      required:
+      - batchObject
+    RetrieveBatchObjectFilesResponse:
+      example:
+        files:
+        - formats:
+          - format: application/xml
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          - format: application/xml
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          fileSize: 1024
+          filePath: path/to/file.txt
+          validity:
+          - valid: true
+            wellFormed: true
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          - valid: true
+            wellFormed: true
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          encoding:
+          - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+            encoding: utf-8
+          - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+            encoding: utf-8
+        - formats:
+          - format: application/xml
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          - format: application/xml
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          fileSize: 1024
+          filePath: path/to/file.txt
+          validity:
+          - valid: true
+            wellFormed: true
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          - valid: true
+            wellFormed: true
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          encoding:
+          - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+            encoding: utf-8
+          - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+            encoding: utf-8
+      properties:
+        files:
+          description: The files associated to the object
+          items:
+            $ref: '#/components/schemas/ObjectFile'
+          type: array
+      required:
+      - files
+    RetrieveBatchObjectFileResponse:
+      example:
+        file:
+          formats:
+          - format: application/xml
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          - format: application/xml
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          fileSize: 1024
+          filePath: path/to/file.txt
+          validity:
+          - valid: true
+            wellFormed: true
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          - valid: true
+            wellFormed: true
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          encoding:
+          - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+            encoding: utf-8
+          - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+            encoding: utf-8
+      properties:
+        file:
+          $ref: '#/components/schemas/ObjectFile'
+      required:
+      - file
+    ApproveIngestBatchRequest:
+      example:
+        reviewedTimestamp: 2000-01-23T04:56:07.000+00:00
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        reviewedTimestamp:
+          description: Timestamp the batch changes were reviewed. Used to ensure that
+            the approved objects were not changed since then. Can be null to use the
+            current time.
+          format: date-time
+          type: string
+      required:
+      - ingestId
+    RejectIngestBatchRequest:
+      example:
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - ingestId
+    BatchRetryIngestRequest:
+      example:
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - ingestId
+    BatchRetryReplicateRequest:
+      example:
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - ingestId
+    UpdateIngestObjectStateRequest:
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        state:
+          $ref: '#/components/schemas/IngestObjectState'
+      required:
+      - externalObjectId
+      - ingestId
+      - state
+    ApproveIngestObjectRequest:
+      example:
+        reviewedTimestamp: 2000-01-23T04:56:07.000+00:00
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        reviewedTimestamp:
+          description: Timestamp the object changes were reviewed. Used to ensure
+            that the object was not changed since then. Can be null to use the current
+            time.
+          format: date-time
+          type: string
+      required:
+      - externalObjectId
+      - ingestId
+    RejectIngestObjectRequest:
+      example:
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        ingestId: 10293
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+      required:
+      - externalObjectId
+      - ingestId
+    DescribePreservationObjectResponse:
+      example:
+        latestVersion: 1
+        lastDeepCheck: 2000-01-23T04:56:07.000+00:00
+        objectCreatedTimestamp: 2000-01-23T04:56:07.000+00:00
+        files:
+        - formats:
+          - format: application/xml
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          - format: application/xml
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          fileSize: 1024
+          filePath: path/to/file.txt
+          validity:
+          - valid: true
+            wellFormed: true
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          - valid: true
+            wellFormed: true
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          encoding:
+          - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+            encoding: utf-8
+          - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+            encoding: utf-8
+        - formats:
+          - format: application/xml
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          - format: application/xml
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          fileSize: 1024
+          filePath: path/to/file.txt
+          validity:
+          - valid: true
+            wellFormed: true
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          - valid: true
+            wellFormed: true
+            source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+          sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          encoding:
+          - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+            encoding: utf-8
+          - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+              when identified by Droid
+            encoding: utf-8
+        versionCreatedTimestamp: 2000-01-23T04:56:07.000+00:00
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        remoteVersionCheck:
+        - lastCheck: 2000-01-23T04:56:07.000+00:00
+        - lastCheck: 2000-01-23T04:56:07.000+00:00
+        version: 1
+        vault: vault-name
+        ingestId: 10293
+        lastShallowCheck: 2000-01-23T04:56:07.000+00:00
+      properties:
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        version:
+          description: The version of an object
+          example: 1
+          format: int32
+          type: integer
+        latestVersion:
+          description: The version of an object
+          example: 1
+          format: int32
+          type: integer
+        state:
+          $ref: '#/components/schemas/PreservationObjectState'
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        objectCreatedTimestamp:
+          description: Timestamp the first version of the object was created
+          format: date-time
+          type: string
+        versionCreatedTimestamp:
+          description: Timestamp this object version was created
+          format: date-time
+          type: string
+        lastShallowCheck:
+          description: Timestamp the object last had a shallow validation check
+          format: date-time
+          type: string
+        lastDeepCheck:
+          description: Timestamp the object last had a deep validation check
+          format: date-time
+          type: string
+        remoteVersionCheck:
+          description: When this object version was last checked in remote storage
+            locations
+          items:
+            $ref: '#/components/schemas/RemoteVersionCheck'
+          type: array
+        files:
+          description: The files contained in this version of the object
+          items:
+            $ref: '#/components/schemas/ObjectFile'
+          type: array
+    RestorePreservationObjectRequest:
+      example:
+        versions:
+        - v2
+        - v2
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        vault: vault-name
+      properties:
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        versions:
+          description: Optional, versions to restore
+          items:
+            $ref: '#/components/schemas/PersistenceVersion'
+          type: array
+      required:
+      - externalObjectId
+      - vault
+    RestorePreservationObjectResponse:
+      example:
+        jobId: 10293
+      properties:
+        jobId:
+          description: The id of a job
+          example: 10293
+          format: int64
+          type: integer
+    ValidatePreservationObjectRequest:
+      example:
+        contentFixityCheck: true
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        vault: vault-name
+      properties:
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        contentFixityCheck:
+          description: True if the digests of all files in the ocfl object should
+            be validated
+          example: true
+          type: boolean
+      required:
+      - contentFixityCheck
+      - externalObjectId
+      - vault
+    ValidatePreservationObjectResponse:
+      example:
+        jobId: 10293
+      properties:
+        jobId:
+          description: The id of a job
+          example: 10293
+          format: int64
+          type: integer
+    ValidateObjectRemoteRequest:
+      example:
+        versions:
+        - v2
+        - v2
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        vault: vault-name
+      properties:
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        dataStore:
+          $ref: '#/components/schemas/DataStore'
+        versions:
+          description: Optional, versions to restore. If not specified all versions
+            are validated
+          items:
+            $ref: '#/components/schemas/PersistenceVersion'
+          type: array
+      required:
+      - dataStore
+      - externalObjectId
+      - vault
+    ValidateObjectRemoteResponse:
+      example:
+        jobIds:
+        - 10293
+        - 10293
+      properties:
+        jobIds:
+          description: List of job ids for the created validation jobs
+          items:
+            $ref: '#/components/schemas/JobId'
+          type: array
+    ReplicateObjectRequest:
+      example:
+        versions:
+        - v2
+        - v2
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        vault: vault-name
+      properties:
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        destination:
+          $ref: '#/components/schemas/DataStore'
+        versions:
+          description: Optional, versions to restore. If not specified all versions
+            are replicated
+          items:
+            $ref: '#/components/schemas/PersistenceVersion'
+          type: array
+      required:
+      - destination
+      - externalObjectId
+      - vault
+    ReplicateObjectResponse:
+      example:
+        jobIds:
+        - 10293
+        - 10293
+      properties:
+        jobIds:
+          description: List of job ids for the created replication jobs
+          items:
+            $ref: '#/components/schemas/JobId'
+          type: array
+    RetrieveEventsResponse:
+      example:
+        events:
+        - agent: preservation-worker-1.0.0
+          logs:
+          - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+            message: Something went wrong
+          - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+            message: Something went wrong
+          username: username
+          eventTimestamp: 2000-01-23T04:56:07.000+00:00
+        - agent: preservation-worker-1.0.0
+          logs:
+          - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+            message: Something went wrong
+          - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+            message: Something went wrong
+          username: username
+          eventTimestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        events:
+          description: Events
+          items:
+            $ref: '#/components/schemas/Event'
+          type: array
+    RetrieveLogsResponse:
+      example:
+        logEntries:
+        - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+          message: Something went wrong
+        - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+          message: Something went wrong
+      properties:
+        logEntries:
+          description: Log entries
+          items:
+            $ref: '#/components/schemas/LogEntry'
+          type: array
+    RetrieveObjectsRequest:
+      example:
+        externalObjectIds:
+        - 1711.dl/ZQ5WPGU2GKBFT8Q
+        - 1711.dl/ZQ5WPGU2GKBFT8Q
+        allVersions: true
+        vault: vault-name
+      properties:
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        allVersions:
+          description: true to return every version of each object
+          example: true
+          type: boolean
+        externalObjectIds:
+          description: Objects to retrieve
+          items:
+            $ref: '#/components/schemas/ExternalObjectId'
+          type: array
+      required:
+      - vault
+    RetrieveObjectsResponse:
+      example:
+        requestId: 10293
+      properties:
+        requestId:
+          description: The id of the retrieval request
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - requestId
+    RetrieveRequestPart:
+      example:
+        jobId: 10293
+        state: READY
+        lastDownloadedTimestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        jobId:
+          description: The id of a job
+          example: 10293
+          format: int64
+          type: integer
+        state:
+          description: Indicates the state of this request part
+          enum:
+          - READY
+          - NOT_READY
+          - FAILED
+          - DELETED
+          - CANCELLED
+          type: string
+        lastDownloadedTimestamp:
+          description: Timestamp this part was last downloaded
+          format: date-time
+          type: string
+    DescribeRetrieveObjectsResponse:
+      example:
+        deleted: true
+        externalObjectIds:
+        - 1711.dl/ZQ5WPGU2GKBFT8Q
+        - 1711.dl/ZQ5WPGU2GKBFT8Q
+        allVersions: true
+        createdTimestamp: 2000-01-23T04:56:07.000+00:00
+        parts:
+        - jobId: 10293
+          state: READY
+          lastDownloadedTimestamp: 2000-01-23T04:56:07.000+00:00
+        - jobId: 10293
+          state: READY
+          lastDownloadedTimestamp: 2000-01-23T04:56:07.000+00:00
+        vault: vault-name
+        deletedTimestamp: 2000-01-23T04:56:07.000+00:00
+        username: username
+      properties:
+        username:
+          description: A user's username in the preservation system
+          type: string
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        allVersions:
+          description: true to return every version of each object
+          example: true
+          type: boolean
+        externalObjectIds:
+          description: Objects to retrieve
+          items:
+            $ref: '#/components/schemas/ExternalObjectId'
+          type: array
+        deleted:
+          description: Indicates if the DIPs generated by this request have been deleted
+          example: true
+          type: boolean
+        createdTimestamp:
+          description: Timestamp the request was received
+          format: date-time
+          type: string
+        deletedTimestamp:
+          description: Timestamp the DIPS were deleted
+          format: date-time
+          type: string
+        parts:
+          description: The parts this request was divided into
+          items:
+            $ref: '#/components/schemas/RetrieveRequestPart'
+          type: array
+    CancelJobRequest:
+      example:
+        jobId: 10293
+      properties:
+        jobId:
+          description: The id of a job
+          example: 10293
+          format: int64
+          type: integer
+      required:
+      - jobId
+    ListJobsResponse:
+      example:
+        jobs:
+        - jobId: 10293
+          receivedTimestamp: 2000-01-23T04:56:07.000+00:00
+          updatedTimestamp: 2000-01-23T04:56:07.000+00:00
+        - jobId: 10293
+          receivedTimestamp: 2000-01-23T04:56:07.000+00:00
+          updatedTimestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        jobs:
+          description: List of jobs
+          items:
+            $ref: '#/components/schemas/JobDetails'
+          type: array
+      required:
+      - jobs
+    DescribeJobResponse:
+      example:
+        job:
+          jobId: 10293
+          receivedTimestamp: 2000-01-23T04:56:07.000+00:00
+          updatedTimestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        job:
+          $ref: '#/components/schemas/JobDetails'
+      required:
+      - job
+    RetrieveObjectStorageProblemsResponse:
+      example:
+        problems:
+        - reportedTimestamp: 2000-01-23T04:56:07.000+00:00
+          persistenceVersion: v2
+        - reportedTimestamp: 2000-01-23T04:56:07.000+00:00
+          persistenceVersion: v2
+      properties:
+        problems:
+          description: List of problems
+          items:
+            $ref: '#/components/schemas/ObjectStorageProblem'
+          type: array
+    ListVaultsResponse:
+      example:
+        vaults:
+        - name: vault-name
+          description: Vault description with more details than the vault name
+        - name: vault-name
+          description: Vault description with more details than the vault name
+      properties:
+        vaults:
+          description: List of vault names and descriptions by organization
+          items:
+            $ref: '#/components/schemas/VaultObject'
+          type: array
+    ListVaultPermissionsResponse:
+      example:
+        vaultPermissions:
+        - permissions:
+          - null
+          - null
+          vault:
+            name: vault-name
+            description: Vault description with more details than the vault name
+        - permissions:
+          - null
+          - null
+          vault:
+            name: vault-name
+            description: Vault description with more details than the vault name
+      properties:
+        vaultPermissions:
+          description: List of all vaults in an org along with the user's permissions
+          items:
+            $ref: '#/components/schemas/VaultPermissionsWithDescription'
+          type: array
+    CreateVaultRequest:
+      example:
+        orgName: organization-id
+        vault:
+          name: vault-name
+          description: Vault description with more details than the vault name
+      properties:
+        orgName:
+          description: The ID of the organization
+          example: organization-id
+          type: string
+        vault:
+          $ref: '#/components/schemas/VaultObject'
+      required:
+      - orgName
+      - vault
+    DescribeVaultResponse:
+      example:
+        objectCount: 10293
+        orgName: organization-id
+        permissions:
+        - null
+        - null
+        vault:
+          name: vault-name
+          description: Vault description with more details than the vault name
+        approximateStorageMegabytes: 10293
+      properties:
+        orgName:
+          description: The ID of the organization
+          example: organization-id
+          type: string
+        vault:
+          $ref: '#/components/schemas/VaultObject'
+        objectCount:
+          description: The number of objects in the vault
+          example: 10293
+          format: int64
+          type: integer
+        approximateStorageMegabytes:
+          description: The approximate amount of space occupied by all object content
+            files in the vault in megabytes
+          example: 10293
+          format: int64
+          type: integer
+        permissions:
+          description: The permissions the user has in the vault
+          items:
+            $ref: '#/components/schemas/VaultPermission'
+          type: array
+    ListVaultProblemsResponse:
+      example:
+        objects:
+        - 1711.dl/ZQ5WPGU2GKBFT8Q
+        - 1711.dl/ZQ5WPGU2GKBFT8Q
+      properties:
+        objects:
+          description: List of external objects IDs for objects with storage problems
+          items:
+            $ref: '#/components/schemas/ExternalObjectId'
+          type: array
+    UserOrganization:
+      example:
+        orgName: organization-id
+        displayName: Organization Name
+        authorities:
+        - null
+        - null
+      properties:
+        orgName:
+          description: The ID of the organization
+          example: organization-id
+          type: string
+        displayName:
+          description: The display name of the organization
+          example: Organization Name
+          type: string
+        role:
+          $ref: '#/components/schemas/Role'
+        authorities:
+          description: List of the user's authorities within the org
+          items:
+            $ref: '#/components/schemas/OrgAuthority'
+          type: array
+    ListUserOrgsResponse:
+      example:
+        orgs:
+        - orgName: organization-id
+          displayName: Organization Name
+          authorities:
+          - null
+          - null
+        - orgName: organization-id
+          displayName: Organization Name
+          authorities:
+          - null
+          - null
+      properties:
+        orgs:
+          description: List of organizations
+          items:
+            $ref: '#/components/schemas/UserOrganization'
+          type: array
+    UpdateUserVaultPermissionsRequest:
+      example:
+        vaultPermissions:
+          permissions:
+          - null
+          - null
+          vault: vault-name
+        username: username
+      properties:
+        username:
+          description: A user's username in the preservation system
+          type: string
+        vaultPermissions:
+          $ref: '#/components/schemas/VaultPermissions'
+    BatchSearchResponse:
+      example:
+        batches:
+        - orgName: organization-id
+          hasAnalysisWarnings: true
+          receivedTimestamp: 2018-12-27T20:50:06.907193Z
+          createdBy: createdBy
+          fileSize: 1024
+          hasAnalysisErrors: true
+          reviewedBy: reviewedBy
+          updatedTimestamp: 2018-12-27T20:50:09.189558Z
+          ingestId: 10293
+          vault: vault-name
+          originalFilename: bag.zip
+        - orgName: organization-id
+          hasAnalysisWarnings: true
+          receivedTimestamp: 2018-12-27T20:50:06.907193Z
+          createdBy: createdBy
+          fileSize: 1024
+          hasAnalysisErrors: true
+          reviewedBy: reviewedBy
+          updatedTimestamp: 2018-12-27T20:50:09.189558Z
+          ingestId: 10293
+          vault: vault-name
+          originalFilename: bag.zip
+        totalResults: 100
+        totalPages: 10
+        page: 0
+      properties:
+        page:
+          description: The page number of this page, zero indexed
+          example: 0
+          type: integer
+        totalPages:
+          description: The total number of pages
+          example: 10
+          type: integer
+        totalResults:
+          description: The total number of results found
+          example: 100
+          type: integer
+        batches:
+          description: List of batches
+          items:
+            $ref: '#/components/schemas/IngestBatchSummary'
+          type: array
+    ListOrgUsersResponse:
+      example:
+        users:
+        - displayName: displayName
+          userType: GENERAL_USER
+          enabledInOrg: true
+          username: username
+        - displayName: displayName
+          userType: GENERAL_USER
+          enabledInOrg: true
+          username: username
+      properties:
+        users:
+          description: List of users in org
+          items:
+            $ref: '#/components/schemas/OrgUser'
+          type: array
+    DescribeOrgResponse:
+      example:
+        orgName: organization-id
+        displayName: Organization Name
+        authorities:
+        - null
+        - null
+      properties:
+        orgName:
+          description: The ID of the organization
+          example: organization-id
+          type: string
+        displayName:
+          description: The display name of the organization
+          example: Organization Name
+          type: string
+        role:
+          $ref: '#/components/schemas/Role'
+        authorities:
+          description: List of the user's authorities within the org
+          items:
+            $ref: '#/components/schemas/OrgAuthority'
+          type: array
+    CreateOrgRequest:
+      example:
+        contactEmail: test@example.com
+        displayName: Organization Name
+        contactName: contactName
+        contactPhone: 555-555-5555
+      properties:
+        displayName:
+          description: The display name of the organization
+          example: Organization Name
+          type: string
+        contactName:
+          description: The primary contact for an organization
+          type: string
+        contactEmail:
+          description: The email of the primary contact for an organization
+          example: test@example.com
+          type: string
+        contactPhone:
+          description: The phone number for the primary contact for an organization
+          example: 555-555-5555
+          type: string
+      required:
+      - contactEmail
+      - contactName
+      - contactPhone
+      - displayName
+    OrganizationContactResponse:
+      example:
+        contactEmail: test@example.com
+        contactName: contactName
+        contactPhone: 555-555-5555
+      properties:
+        contactName:
+          description: The primary contact for an organization
+          type: string
+        contactEmail:
+          description: The email of the primary contact for an organization
+          example: test@example.com
+          type: string
+        contactPhone:
+          description: The phone number for the primary contact for an organization
+          example: 555-555-5555
+          type: string
+    ListVaultUsersResponse:
+      example:
+        users:
+        - displayName: displayName
+          permissions:
+          - null
+          - null
+          userType: GENERAL_USER
+          enabledInOrg: true
+          username: username
+        - displayName: displayName
+          permissions:
+          - null
+          - null
+          userType: GENERAL_USER
+          enabledInOrg: true
+          username: username
+      properties:
+        users:
+          description: List of users in vault
+          items:
+            $ref: '#/components/schemas/VaultUser'
+          type: array
+    DescribeUserResponse:
+      example:
+        user:
+          displayName: displayName
+          userType: GENERAL_USER
+          enabled: true
+          username: username
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+    DiffBatchObjectResponse:
+      example:
+        hasChanges: true
+        files:
+        - path: path/to/file.txt
+          validityDiff:
+            removed:
+            - valid: true
+              wellFormed: true
+            - valid: true
+              wellFormed: true
+            added:
+            - valid: true
+              wellFormed: true
+            - valid: true
+              wellFormed: true
+            unchanged:
+            - valid: true
+              wellFormed: true
+            - valid: true
+              wellFormed: true
+          oldSha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          newSha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          formatDiff:
+            removed:
+            - format: application/xml
+            - format: application/xml
+            added:
+            - format: application/xml
+            - format: application/xml
+            unchanged:
+            - format: application/xml
+            - format: application/xml
+          diff: ADDED
+          encodingDiff:
+            removed:
+            - removed
+            - removed
+            added:
+            - added
+            - added
+            unchanged:
+            - unchanged
+            - unchanged
+        - path: path/to/file.txt
+          validityDiff:
+            removed:
+            - valid: true
+              wellFormed: true
+            - valid: true
+              wellFormed: true
+            added:
+            - valid: true
+              wellFormed: true
+            - valid: true
+              wellFormed: true
+            unchanged:
+            - valid: true
+              wellFormed: true
+            - valid: true
+              wellFormed: true
+          oldSha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          newSha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          formatDiff:
+            removed:
+            - format: application/xml
+            - format: application/xml
+            added:
+            - format: application/xml
+            - format: application/xml
+            unchanged:
+            - format: application/xml
+            - format: application/xml
+          diff: ADDED
+          encodingDiff:
+            removed:
+            - removed
+            - removed
+            added:
+            - added
+            - added
+            unchanged:
+            - unchanged
+            - unchanged
+      properties:
+        hasChanges:
+          description: Indicates if the object contains any file changes from what
+            was previously preserved
+          example: true
+          type: boolean
+        files:
+          description: List of files diffed
+          items:
+            $ref: '#/components/schemas/FileDiff'
+          type: array
+    FileDiff:
+      example:
+        path: path/to/file.txt
+        validityDiff:
+          removed:
+          - valid: true
+            wellFormed: true
+          - valid: true
+            wellFormed: true
+          added:
+          - valid: true
+            wellFormed: true
+          - valid: true
+            wellFormed: true
+          unchanged:
+          - valid: true
+            wellFormed: true
+          - valid: true
+            wellFormed: true
+        oldSha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+        newSha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+        formatDiff:
+          removed:
+          - format: application/xml
+          - format: application/xml
+          added:
+          - format: application/xml
+          - format: application/xml
+          unchanged:
+          - format: application/xml
+          - format: application/xml
+        diff: ADDED
+        encodingDiff:
+          removed:
+          - removed
+          - removed
+          added:
+          - added
+          - added
+          unchanged:
+          - unchanged
+          - unchanged
+      properties:
+        path:
+          description: The object relative path of the file
+          example: path/to/file.txt
+          type: string
+        newSha256Digest:
+          description: The sha256 digest of the file in the batch
+          example: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          type: string
+        oldSha256Digest:
+          description: The sha256 digest of the file in the preserved object
+          example: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          type: string
+        diff:
+          description: The relationship between the batch object file and the preserved
+            object file
+          enum:
+          - ADDED
+          - REMOVED
+          - MODIFIED
+          - UNCHANGED
+          type: string
+        formatDiff:
+          $ref: '#/components/schemas/FormatDiff'
+        encodingDiff:
+          $ref: '#/components/schemas/EncodingDiff'
+        validityDiff:
+          $ref: '#/components/schemas/ValidityDiff'
+    FormatDiff:
+      example:
+        removed:
+        - format: application/xml
+        - format: application/xml
+        added:
+        - format: application/xml
+        - format: application/xml
+        unchanged:
+        - format: application/xml
+        - format: application/xml
+      properties:
+        added:
+          description: Newly identified formats
+          items:
+            $ref: '#/components/schemas/Format'
+          type: array
+        removed:
+          description: Removed formats
+          items:
+            $ref: '#/components/schemas/Format'
+          type: array
+        unchanged:
+          description: Unchanged formats
+          items:
+            $ref: '#/components/schemas/Format'
+          type: array
+    Format:
+      example:
+        format: application/xml
+      properties:
+        format:
+          description: The ID of the file format within the registry
+          example: application/xml
+          type: string
+        registry:
+          $ref: '#/components/schemas/FormatRegistry'
+    EncodingDiff:
+      example:
+        removed:
+        - removed
+        - removed
+        added:
+        - added
+        - added
+        unchanged:
+        - unchanged
+        - unchanged
+      properties:
+        added:
+          description: Newly identified encodings
+          items:
+            type: string
+          type: array
+        removed:
+          description: Removed encodings
+          items:
+            type: string
+          type: array
+        unchanged:
+          description: Unchanged encodings
+          items:
+            type: string
+          type: array
+    ValidityDiff:
+      example:
+        removed:
+        - valid: true
+          wellFormed: true
+        - valid: true
+          wellFormed: true
+        added:
+        - valid: true
+          wellFormed: true
+        - valid: true
+          wellFormed: true
+        unchanged:
+        - valid: true
+          wellFormed: true
+        - valid: true
+          wellFormed: true
+      properties:
+        added:
+          description: New validities
+          items:
+            $ref: '#/components/schemas/Validity'
+          type: array
+        removed:
+          description: Removed validities
+          items:
+            $ref: '#/components/schemas/Validity'
+          type: array
+        unchanged:
+          description: Unchanged validities
+          items:
+            $ref: '#/components/schemas/Validity'
+          type: array
+    Validity:
+      example:
+        valid: true
+        wellFormed: true
+      properties:
+        valid:
+          description: Indicates if the file is valid
+          example: true
+          type: boolean
+        wellFormed:
+          description: Indicates if the file is well formed
+          example: true
+          type: boolean
+    DeleteObjectRequest:
+      example:
+        reason: Deletion requested by so-and-so for legal reasons
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        vault: vault-name
+      properties:
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        reason:
+          description: Reason for the deletion
+          example: Deletion requested by so-and-so for legal reasons
+          type: string
+      required:
+      - externalObjectId
+      - reason
+      - vault
+    SystemStorageOrgDetails:
+      example:
+        objectCount: 10293
+        orgName: organization-id
+        displayName: Organization Name
+        storageMegabytes: 10293
+      properties:
+        orgName:
+          description: The ID of the organization
+          example: organization-id
+          type: string
+        displayName:
+          description: The display name of the organization
+          example: Organization Name
+          type: string
+        objectCount:
+          description: The total number of objects in the org
+          example: 10293
+          format: int64
+          type: integer
+        storageMegabytes:
+          description: The approximate amount of space occupied by all object content
+            files in the org in megabytes
+          example: 10293
+          format: int64
+          type: integer
+    SystemStorageResponse:
+      example:
+        totalObjectCount: 10293
+        organizations:
+        - objectCount: 10293
+          orgName: organization-id
+          displayName: Organization Name
+          storageMegabytes: 10293
+        - objectCount: 10293
+          orgName: organization-id
+          displayName: Organization Name
+          storageMegabytes: 10293
+        totalStorageMegabytes: 10293
+      properties:
+        totalObjectCount:
+          description: The total number of objects in the system
+          example: 10293
+          format: int64
+          type: integer
+        totalStorageMegabytes:
+          description: The approximate amount of space occupied by all object content
+            files in the system in megabytes
+          example: 10293
+          format: int64
+          type: integer
+        organizations:
+          description: Organization level storage details
+          items:
+            $ref: '#/components/schemas/SystemStorageOrgDetails'
+          type: array
+    EventOutcomeCount:
+      example:
+        approved: 10293
+        rejected: 10293
+        success: 10293
+        failure: 10293
+        successWithWarnings: 10293
+        notExecuted: 10293
+      properties:
+        success:
+          description: Count of events with outcome 'SUCCESS'.
+          example: 10293
+          format: int64
+          type: integer
+        failure:
+          description: Count of events with outcome 'FAILURE'.
+          example: 10293
+          format: int64
+          type: integer
+        successWithWarnings:
+          description: Count of events with outcome 'SUCCESS_WITH_WARNINGS'.
+          example: 10293
+          format: int64
+          type: integer
+        approved:
+          description: Count of events with outcome 'APPROVED'.
+          example: 10293
+          format: int64
+          type: integer
+        rejected:
+          description: Count of events with outcome 'REJECTED'.
+          example: 10293
+          format: int64
+          type: integer
+        notExecuted:
+          description: Count of events with outcome 'NOT_EXECUTED'.
+          example: 10293
+          format: int64
+          type: integer
+    EventCounts:
+      example:
+        eventCountsByOutcome:
+          approved: 10293
+          rejected: 10293
+          success: 10293
+          failure: 10293
+          successWithWarnings: 10293
+          notExecuted: 10293
+      properties:
+        eventType:
+          $ref: '#/components/schemas/EventType'
+        eventCountsByOutcome:
+          $ref: '#/components/schemas/EventOutcomeCount'
+    SystemEventCountsResponse:
+      example:
+        eventCounts:
+        - eventCountsByOutcome:
+            approved: 10293
+            rejected: 10293
+            success: 10293
+            failure: 10293
+            successWithWarnings: 10293
+            notExecuted: 10293
+        - eventCountsByOutcome:
+            approved: 10293
+            rejected: 10293
+            success: 10293
+            failure: 10293
+            successWithWarnings: 10293
+            notExecuted: 10293
+      properties:
+        eventCounts:
+          items:
+            $ref: '#/components/schemas/EventCounts'
+          type: array
+    DisableJobTypesRequest:
+      example:
+        types:
+        - null
+        - null
+      properties:
+        types:
+          description: Job types to disable or an empty list to disable all types
+          items:
+            $ref: '#/components/schemas/JobType'
+          type: array
+    EnableJobTypesRequest:
+      example:
+        types:
+        - null
+        - null
+      properties:
+        types:
+          description: Job types to enable or an empty list to enable all types
+          items:
+            $ref: '#/components/schemas/JobType'
+          type: array
+    ErrorResponse:
+      properties:
+        timestamp:
+          description: Timestamp when the error occurred
+          format: date-time
+          type: string
+        requestId:
+          description: UUID assigned to the request
+          example: 6037de0a4b2e4611956da540938a00ff
+          type: string
+        status:
+          description: HTTP status code
+          example: 500
+          format: int32
+          type: integer
+        error:
+          description: Application classification of the error
+          type: string
+        message:
+          description: Description of the error
+          example: Invalid input
+          type: string
+        path:
+          description: Request path
+          example: /api/ingest/bag
+          type: string
+      required:
+      - error
+      - message
+      - path
+      - requestId
+      - status
+      - timestamp
+    EventType:
+      description: The type of event
+      enum:
+      - RECEIVE_BAG
+      - VIRUS_SCAN_BAG
+      - VALIDATE_BAG
+      - IDENTIFY_OBJ
+      - IDENTIFY_FILE_FORMAT
+      - REVIEW_OBJ
+      - REVIEW_BATCH
+      - WRITE_OBJ_LOCAL
+      - CREATE_OBJ
+      - UPDATE_OBJ
+      - UPDATE_OBJ_METADATA
+      - REPLICATE_OBJ_VERSION
+      - COMPLETE_OBJ_INGEST
+      - COMPLETE_BATCH_INGEST
+      - DELETE_BAG
+      - VALIDATE_OBJ_LOCAL
+      - VALIDATE_OBJ_VERSION_LOCAL
+      - VALIDATE_OBJ_VERSION_REMOTE
+      - RESTORE_OBJ_VERSION
+      - PREPARE_DIP
+      - DELETE_OBJ
+      type: string
+    EventOutcome:
+      description: The outcome of an event
+      enum:
+      - SUCCESS
+      - FAILURE
+      - SUCCESS_WITH_WARNINGS
+      - APPROVED
+      - REJECTED
+      - NOT_EXECUTED
+      type: string
+    Vault:
+      description: The name of the vault
+      example: vault-name
+      type: string
+    IngestId:
+      description: The ID for the Ingest Batch
+      example: 10293
+      format: int64
+      type: integer
+    IngestBatchSummary:
+      description: Ingest Batch summary
+      example:
+        orgName: organization-id
+        hasAnalysisWarnings: true
+        receivedTimestamp: 2018-12-27T20:50:06.907193Z
+        createdBy: createdBy
+        fileSize: 1024
+        hasAnalysisErrors: true
+        reviewedBy: reviewedBy
+        updatedTimestamp: 2018-12-27T20:50:09.189558Z
+        ingestId: 10293
+        vault: vault-name
+        originalFilename: bag.zip
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        orgName:
+          description: The ID of the organization
+          example: organization-id
+          type: string
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        createdBy:
+          description: The username of the user who submitted the batch
+          type: string
+        reviewedBy:
+          description: The username of the user who approved/rejected the batch object
+          type: string
+        state:
+          $ref: '#/components/schemas/IngestBatchState'
+        originalFilename:
+          description: The name of the file as uploaded
+          example: bag.zip
+          type: string
+        fileSize:
+          description: Bag size in bytes
+          example: 1024
+          format: int64
+          type: integer
+        hasAnalysisErrors:
+          description: Indicates if there were errors during analysis
+          example: true
+          type: boolean
+        hasAnalysisWarnings:
+          description: Indicates if there were warnings during analysis
+          example: true
+          type: boolean
+        receivedTimestamp:
+          description: UTC timestamp when the batch was received
+          example: 2018-12-27T20:50:06.907193Z
+          format: date-time
+          type: string
+        updatedTimestamp:
+          description: UTC timestamp when the batch was last updated
+          example: 2018-12-27T20:50:09.189558Z
+          format: date-time
+          type: string
+      required:
+      - createdBy
+      - ingestId
+      - orgName
+      - receivedTimestamp
+      - state
+      - vault
+      type: object
+    OrgName:
+      description: The ID of the organization
+      example: organization-id
+      type: string
+    ReviewedBy:
+      description: The username of the user who approved/rejected the batch object
+      type: string
+    IngestBatchState:
+      description: The state of an Ingest Batch
+      enum:
+      - RECEIVED
+      - ANALYZING
+      - ANALYSIS_FAILED
+      - PENDING_REVIEW
+      - PENDING_INGESTION
+      - PENDING_REJECTION
+      - INGESTING
+      - INGEST_FAILED
+      - REPLICATING
+      - REPLICATION_FAILED
+      - COMPLETE
+      - REJECTING
+      - REJECTED
+      - DELETED
+      type: string
+    AnalysisErrors:
+      description: Indicates if there were errors during analysis
+      example: true
+      type: boolean
+    AnalysisWarnings:
+      description: Indicates if there were warnings during analysis
+      example: true
+      type: boolean
+    Page:
+      description: The page number of this page, zero indexed
+      example: 0
+      type: integer
+    TotalPages:
+      description: The total number of pages
+      example: 10
+      type: integer
+    TotalResults:
+      description: The total number of results found
+      example: 100
+      type: integer
+    IngestBatchObject:
+      description: An object within an Ingest Batch
+      example:
+        hasAnalysisWarnings: true
+        hasAnalysisErrors: true
+        externalObjectId: 1711.dl/ZQ5WPGU2GKBFT8Q
+        reviewedBy: reviewedBy
+        version: 1
+        ingestId: 10293
+        vault: vault-name
+      properties:
+        ingestId:
+          description: The ID for the Ingest Batch
+          example: 10293
+          format: int64
+          type: integer
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        externalObjectId:
+          description: The external ID of the object
+          example: 1711.dl/ZQ5WPGU2GKBFT8Q
+          type: string
+        version:
+          description: The version of an object
+          example: 1
+          format: int32
+          type: integer
+        state:
+          $ref: '#/components/schemas/IngestObjectState'
+        reviewedBy:
+          description: The username of the user who approved/rejected the batch object
+          type: string
+        hasAnalysisErrors:
+          description: Indicates if there were errors during analysis
+          example: true
+          type: boolean
+        hasAnalysisWarnings:
+          description: Indicates if there were warnings during analysis
+          example: true
+          type: boolean
+      required:
+      - externalObjectId
+      - ingestId
+      - state
+      - vault
+      type: object
+    ExternalObjectId:
+      description: The external ID of the object
+      example: 1711.dl/ZQ5WPGU2GKBFT8Q
+      type: string
+    Version:
+      description: The version of an object
+      example: 1
+      format: int32
+      type: integer
+    IngestObjectState:
+      description: The state of an Ingest Object
+      enum:
+      - ANALYZING
+      - ANALYSIS_FAILED
+      - PENDING_REVIEW
+      - PENDING_INGESTION
+      - PENDING_REJECTION
+      - INGESTING
+      - INGESTED
+      - INGEST_FAILED
+      - NO_CHANGE
+      - REPLICATING
+      - REPLICATED
+      - REPLICATION_FAILED
+      - COMPLETE
+      - REJECTING
+      - REJECTED
+      - DELETED
+      type: string
+    ObjectFile:
+      description: A file within an object
+      example:
+        formats:
+        - format: application/xml
+          source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+        - format: application/xml
+          source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+        fileSize: 1024
+        filePath: path/to/file.txt
+        validity:
+        - valid: true
+          wellFormed: true
+          source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+        - valid: true
+          wellFormed: true
+          source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+        sha256Digest: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+        encoding:
+        - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+          encoding: utf-8
+        - source: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+          encoding: utf-8
+      properties:
+        filePath:
+          description: The object relative path of the file
+          example: path/to/file.txt
+          type: string
+        sha256Digest:
+          description: The sha256 digest of the file
+          example: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+          type: string
+        fileSize:
+          description: Size of the file in bytes
+          example: 1024
+          format: int64
+          type: integer
+        formats:
+          description: Array of file formats attributed to the file
+          items:
+            $ref: '#/components/schemas/FileFormat'
+          type: array
+        encoding:
+          description: Array of file encodings attributed to the file
+          items:
+            $ref: '#/components/schemas/FileEncoding'
+          type: array
+        validity:
+          description: Array of file validities attributed to the file
+          items:
+            $ref: '#/components/schemas/FileValidity'
+          type: array
+      required:
+      - filePath
+      - sha256Digest
+      type: object
+    FilePath:
+      description: The object relative path of the file
+      example: path/to/file.txt
+      type: string
+    Sha256Digest:
+      description: The sha256 digest of the file
+      example: 1ff0a30eedd7819f4552179c94ea89ed03f5d1a4265fcd0f971ebe7bc17317cf
+      type: string
+    FileSize:
+      description: Size of the file in bytes
+      example: 1024
+      format: int64
+      type: integer
+    FileFormat:
+      description: File format of a file
+      example:
+        format: application/xml
+        source: USER when specified by the user; otherwise tool id, eg Droid-6.4 when
+          identified by Droid
+      properties:
+        formatRegistry:
+          $ref: '#/components/schemas/FormatRegistry'
+        format:
+          description: The ID of the file format within the registry
+          example: application/xml
+          type: string
+        source:
+          description: The source of the identification
+          example: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+          type: string
+      required:
+      - format
+      - formatRegistry
+      - source
+      type: object
+    FormatRegistry:
+      description: Registry of format identifiers
+      enum:
+      - MIME
+      - PRONOM
+      type: string
+    FileFormatName:
+      description: The ID of the file format within the registry
+      example: application/xml
+      type: string
+    IdentificationSource:
+      description: The source of the identification
+      example: USER when specified by the user; otherwise tool id, eg Droid-6.4 when
+        identified by Droid
+      type: string
+    FileEncoding:
+      description: Encoding for a file
+      example:
+        source: USER when specified by the user; otherwise tool id, eg Droid-6.4 when
+          identified by Droid
+        encoding: utf-8
+      properties:
+        encoding:
+          description: The file encoding
+          example: utf-8
+          type: string
+        source:
+          description: The source of the identification
+          example: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+          type: string
+      required:
+      - encoding
+      - source
+      type: object
+    FileEncodingName:
+      description: The file encoding
+      example: utf-8
+      type: string
+    FileValidity:
+      description: Validity of a file
+      example:
+        valid: true
+        wellFormed: true
+        source: USER when specified by the user; otherwise tool id, eg Droid-6.4 when
+          identified by Droid
+      properties:
+        valid:
+          description: Indicates if the file is valid
+          example: true
+          type: boolean
+        wellFormed:
+          description: Indicates if the file is well formed
+          example: true
+          type: boolean
+        source:
+          description: The source of the identification
+          example: USER when specified by the user; otherwise tool id, eg Droid-6.4
+            when identified by Droid
+          type: string
+      required:
+      - source
+      type: object
+    FileValid:
+      description: Indicates if the file is valid
+      example: true
+      type: boolean
+    FileWellFormed:
+      description: Indicates if the file is well formed
+      example: true
+      type: boolean
+    PreservationObjectState:
+      description: The state of a Preservation Object
+      enum:
+      - ACTIVE
+      - DELETED
+      type: string
+    RemoteVersionCheck:
+      example:
+        lastCheck: 2000-01-23T04:56:07.000+00:00
+      properties:
+        location:
+          $ref: '#/components/schemas/DataStore'
+        lastCheck:
+          description: Timestamp of last validation check
+          format: date-time
+          type: string
+    DataStore:
+      description: A data store location
+      enum:
+      - IBM_COS
+      - GLACIER
+      type: string
+    PersistenceVersion:
+      description: The version identifier of the object version
+      example: v2
+      type: string
+    JobId:
+      description: The id of a job
+      example: 10293
+      format: int64
+      type: integer
+    Event:
+      example:
+        agent: preservation-worker-1.0.0
+        logs:
+        - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+          message: Something went wrong
+        - createdTimestamp: 2000-01-23T04:56:07.000+00:00
+          message: Something went wrong
+        username: username
+        eventTimestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        username:
+          description: The username of the user responsible for the event
+          type: string
+        agent:
+          description: The software component responsible for the event
+          example: preservation-worker-1.0.0
+          type: string
+        type:
+          $ref: '#/components/schemas/EventType'
+        outcome:
+          $ref: '#/components/schemas/EventOutcome'
+        eventTimestamp:
+          description: The timestamp the event occurred
+          format: date-time
+          type: string
+        logs:
+          description: Any log entries associated with the event
+          items:
+            $ref: '#/components/schemas/LogEntry'
+          type: array
+    EventUser:
+      description: The username of the user responsible for the event
+      type: string
+    EventAgent:
+      description: The software component responsible for the event
+      example: preservation-worker-1.0.0
+      type: string
+    EventTimestamp:
+      description: The timestamp the event occurred
+      format: date-time
+      type: string
+    LogEntry:
+      example:
+        createdTimestamp: 2000-01-23T04:56:07.000+00:00
+        message: Something went wrong
+      properties:
+        level:
+          $ref: '#/components/schemas/LogLevel'
+        message:
+          description: Log entry text
+          example: Something went wrong
+          type: string
+        createdTimestamp:
+          description: The timestamp the log entry was created
+          format: date-time
+          type: string
+    LogLevel:
+      description: Log level
+      enum:
+      - INFO
+      - WARN
+      - ERROR
+      type: string
+    LogMessage:
+      description: Log entry text
+      example: Something went wrong
+      type: string
+    LogCreatedTimestamp:
+      description: The timestamp the log entry was created
+      format: date-time
+      type: string
+    Username:
+      description: A user's username in the preservation system
+      type: string
+    JobDetails:
+      example:
+        jobId: 10293
+        receivedTimestamp: 2000-01-23T04:56:07.000+00:00
+        updatedTimestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        jobId:
+          description: The id of a job
+          example: 10293
+          format: int64
+          type: integer
+        type:
+          $ref: '#/components/schemas/JobType'
+        state:
+          $ref: '#/components/schemas/JobState'
+        receivedTimestamp:
+          description: Timestamp the job was created
+          format: date-time
+          type: string
+        updatedTimestamp:
+          description: Timestamp the job was updated
+          format: date-time
+          type: string
+    JobType:
+      description: Type of job
+      enum:
+      - RETRIEVE_OBJECTS
+      - REPLICATE
+      - RESTORE
+      - FINALIZE_RESTORE
+      - VALIDATE_LOCAL
+      - PROCESS_BATCH
+      - VALIDATE_REMOTE
+      - DELETE_DIP
+      - CLEANUP_SIPS
+      type: string
+    JobState:
+      description: The state of a job
+      enum:
+      - PENDING
+      - EXECUTING
+      - FAILED
+      - COMPLETE
+      - CANCELLED
+      type: string
+    ObjectStorageProblem:
+      example:
+        reportedTimestamp: 2000-01-23T04:56:07.000+00:00
+        persistenceVersion: v2
+      properties:
+        dataStore:
+          $ref: '#/components/schemas/DataStore'
+        problem:
+          $ref: '#/components/schemas/StorageProblemType'
+        persistenceVersion:
+          description: The version identifier of the object version
+          example: v2
+          type: string
+        reportedTimestamp:
+          description: Timestamp the storage problem was identified
+          format: date-time
+          type: string
+      required:
+      - dataStore
+      - problem
+      - reportedTimestamp
+    StorageProblemType:
+      description: Type of problem identified in the storage layer
+      enum:
+      - NONE
+      - MISSING
+      - CORRUPT
+      type: string
+    VaultObject:
+      example:
+        name: vault-name
+        description: Vault description with more details than the vault name
+      properties:
+        name:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        description:
+          description: Additional information about the vault
+          example: Vault description with more details than the vault name
+          type: string
+    VaultPermissionsWithDescription:
+      example:
+        permissions:
+        - null
+        - null
+        vault:
+          name: vault-name
+          description: Vault description with more details than the vault name
+      properties:
+        vault:
+          $ref: '#/components/schemas/VaultObject'
+        permissions:
+          description: The permissions the user has in the vault
+          items:
+            $ref: '#/components/schemas/VaultPermission'
+          type: array
+    VaultPermission:
+      description: A vault permission
+      enum:
+      - READ
+      - WRITE
+      type: string
+    OrgDisplayName:
+      description: The display name of the organization
+      example: Organization Name
+      type: string
+    Role:
+      description: A user's role within an organization
+      enum:
+      - STANDARD
+      - ADMIN
+      type: string
+    OrgAuthority:
+      description: A user's authority within an organization
+      enum:
+      - BASIC_OPS
+      - ADMIN_OPS
+      type: string
+    VaultPermissions:
+      example:
+        permissions:
+        - null
+        - null
+        vault: vault-name
+      properties:
+        vault:
+          description: The name of the vault
+          example: vault-name
+          type: string
+        permissions:
+          description: The permissions the user has in the vault
+          items:
+            $ref: '#/components/schemas/VaultPermission'
+          type: array
+    OrgUser:
+      description: Details about a user in an organization
+      example:
+        displayName: displayName
+        userType: GENERAL_USER
+        enabledInOrg: true
+        username: username
+      properties:
+        username:
+          description: A user's username in the preservation system
+          type: string
+        displayName:
+          description: The user's display name
+          type: string
+        role:
+          $ref: '#/components/schemas/Role'
+        enabledInOrg:
+          description: Indicates if the user is enabled
+          example: true
+          type: boolean
+        userType:
+          $ref: '#/components/schemas/UserType'
+      type: object
+    UserDisplayName:
+      description: The user's display name
+      type: string
+    UserEnabled:
+      description: Indicates if the user is enabled
+      example: true
+      type: boolean
+    UserType:
+      description: Indicates the type of user
+      enum:
+      - GENERAL_USER
+      - PROGRAMMATIC_USER
+      - SERVICE_ADMIN
+      example: GENERAL_USER
+      type: string
+    ContactName:
+      description: The primary contact for an organization
+      type: string
+    ContactEmail:
+      description: The email of the primary contact for an organization
+      example: test@example.com
+      type: string
+    ContactPhone:
+      description: The phone number for the primary contact for an organization
+      example: 555-555-5555
+      type: string
+    VaultUser:
+      description: Details about a user in a vault
+      example:
+        displayName: displayName
+        permissions:
+        - null
+        - null
+        userType: GENERAL_USER
+        enabledInOrg: true
+        username: username
+      properties:
+        username:
+          description: A user's username in the preservation system
+          type: string
+        displayName:
+          description: The user's display name
+          type: string
+        enabledInOrg:
+          description: Indicates if the user is enabled
+          example: true
+          type: boolean
+        userType:
+          $ref: '#/components/schemas/UserType'
+        permissions:
+          description: The permissions the user has in the vault
+          items:
+            $ref: '#/components/schemas/VaultPermission'
+          type: array
+      type: object
+    User:
+      description: Details about a user
+      example:
+        displayName: displayName
+        userType: GENERAL_USER
+        enabled: true
+        username: username
+      properties:
+        username:
+          description: A user's username in the preservation system
+          type: string
+        displayName:
+          description: The user's display name
+          type: string
+        enabled:
+          description: Indicates if the user is enabled
+          example: true
+          type: boolean
+        userType:
+          $ref: '#/components/schemas/UserType'
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: X-API-KEY
+      type: apiKey
+

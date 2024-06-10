@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fits xmlns="http://hul.harvard.edu/ois/xml/ns/fits/fits_output" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd" version="1.6.0" timestamp="3/7/23, 7:44 PM">
+  <identification>
+    <identity format="Plain text" mimetype="text/plain" toolname="FITS" toolversion="1.6.0">
+      <tool toolname="Droid" toolversion="6.5.2" />
+      <tool toolname="file utility" toolversion="5.43" />
+      <tool toolname="Exiftool" toolversion="12.50" />
+      <tool toolname="Tika" toolversion="2.6.0" />
+      <tool toolname="Jhove" toolversion="1.26.1" />
+      <externalIdentifier toolname="Droid" toolversion="6.5.2" type="puid">x-fmt/111</externalIdentifier>
+    </identity>
+  </identification>
+  <fileinfo>
+    <filepath toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">/preservation/valid.txt</filepath>
+    <filename toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">valid.txt</filename>
+    <size toolname="OIS File Information" toolversion="1.0">27</size>
+    <md5checksum toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">be63612d529d7f43d4cdf90b15ac1fe0</md5checksum>
+    <fslastmodified toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">1678218216000</fslastmodified>
+  </fileinfo>
+  <filestatus>
+    <well-formed toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">true</well-formed>
+    <valid toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">true</valid>
+  </filestatus>
+  <metadata>
+    <text>
+      <charset toolname="file utility" toolversion="5.43" status="CONFLICT">US-ASCII</charset>
+      <charset toolname="Tika" toolversion="2.6.0" status="CONFLICT">ISO-8859-1</charset>
+      <linebreak toolname="Exiftool" toolversion="12.50">LF</linebreak>
+      <lineCount toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">1</lineCount>
+      <wordCount toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">6</wordCount>
+    </text>
+  </metadata>
+  <toolOutput>
+    <tool name="Droid" version="6.5.2">
+      <results xmlns="">
+        <result>
+          <filePuid>x-fmt/111</filePuid>
+          <formatName>Plain Text File</formatName>
+          <mimeType>text/plain</mimeType>
+          <version>null</version>
+        </result>
+      </results>
+    </tool>
+    <tool name="file utility" version="5.43">
+      <fileUtilityOutput xmlns="">
+        <rawOutput>ASCII text
+text/plain; charset=us-ascii</rawOutput>
+        <mimetype>text/plain</mimetype>
+        <format>Plain text</format>
+        <charset>US-ASCII</charset>
+      </fileUtilityOutput>
+    </tool>
+    <tool name="OIS File Information" version="1.0">
+      <fits xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd">
+        <fileinfo>
+          <filepath>/preservation/valid.txt</filepath>
+          <filename>valid.txt</filename>
+          <size>27</size>
+          <md5checksum>be63612d529d7f43d4cdf90b15ac1fe0</md5checksum>
+          <fslastmodified>1678218216000</fslastmodified>
+        </fileinfo>
+      </fits>
+    </tool>
+    <tool name="Exiftool" version="12.50">
+      <exiftool xmlns="">
+        <ExifToolVersion>12.50</ExifToolVersion>
+        <FileName>valid.txt</FileName>
+        <Directory>.</Directory>
+        <FileSize>27 bytes</FileSize>
+        <FileModifyDate>2023:03:07 19:43:36+00:00</FileModifyDate>
+        <FileAccessDate>2023:03:07 19:44:52+00:00</FileAccessDate>
+        <FileInodeChangeDate>2023:03:07 19:44:25+00:00</FileInodeChangeDate>
+        <FilePermissions>-rw-r--r--</FilePermissions>
+        <FileType>TXT</FileType>
+        <FileTypeExtension>txt</FileTypeExtension>
+        <MIMEType>text/plain</MIMEType>
+        <MIMEEncoding>us-ascii</MIMEEncoding>
+        <Newlines>Unix LF</Newlines>
+        <LineCount>1</LineCount>
+        <WordCount>6</WordCount>
+      </exiftool>
+    </tool>
+    <tool name="Tika" version="2.6.0">
+      <metadata xmlns="">
+        <field name="X-TIKA:Parsed-By">
+          <value>org.apache.tika.parser.DefaultParser</value>
+          <value>org.apache.tika.parser.csv.TextAndCSVParser</value>
+        </field>
+        <field name="X-TIKA:Parsed-By-Full-Set">
+          <value>org.apache.tika.parser.DefaultParser</value>
+          <value>org.apache.tika.parser.csv.TextAndCSVParser</value>
+        </field>
+        <field name="Content-Encoding">
+          <value>ISO-8859-1</value>
+        </field>
+        <field name="resourceName">
+          <value>valid.txt</value>
+        </field>
+        <field name="Content-Length">
+          <value>27</value>
+        </field>
+        <field name="Content-Type">
+          <value>text/plain; charset=ISO-8859-1</value>
+        </field>
+      </metadata>
+    </tool>
+    <tool name="Jhove" version="1.26.1">
+      <repInfo xmlns="" uri="/preservation/valid.txt">
+        <reportingModule release="1.4.2" date="2022-04-22">ASCII-hul</reportingModule>
+        <lastModified>2023-03-07T19:43:36+00:00</lastModified>
+        <size>27</size>
+        <format>ASCII</format>
+        <status>Well-Formed and valid</status>
+        <mimeType>text/plain; charset=US-ASCII</mimeType>
+        <properties>
+          <property>
+            <name>ASCIIMetadata</name>
+            <values arity="List" type="Property">
+              <property>
+                <name>LineEndings</name>
+                <values arity="List" type="String">
+                  <value>LF</value>
+                </values>
+              </property>
+            </values>
+          </property>
+        </properties>
+      </repInfo>
+    </tool>
+  </toolOutput>
+  <statistics fitsExecutionTime="1953">
+    <tool toolname="MediaInfo" toolversion="22.09" status="did not run" />
+    <tool toolname="OIS Audio Information" toolversion="0.1" status="did not run" />
+    <tool toolname="ADL Tool" toolversion="0.1" status="did not run" />
+    <tool toolname="Droid" toolversion="6.5.2" executionTime="149" />
+    <tool toolname="file utility" toolversion="5.43" executionTime="1865" />
+    <tool toolname="OIS File Information" toolversion="1.0" executionTime="134" />
+    <tool toolname="Exiftool" toolversion="12.50" executionTime="1840" />
+    <tool toolname="Tika" toolversion="2.6.0" executionTime="451" />
+    <tool toolname="Jhove" toolversion="1.26.1" executionTime="1758" />
+    <tool toolname="OIS XML Metadata" toolversion="0.2" status="did not run" />
+    <tool toolname="NLNZ Metadata Extractor" toolversion="3.6GA" status="did not run" />
+  </statistics>
+</fits>

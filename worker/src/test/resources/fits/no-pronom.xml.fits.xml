@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fits xmlns="http://hul.harvard.edu/ois/xml/ns/fits/fits_output" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd" version="1.6.0" timestamp="3/7/23, 6:49 PM">
+  <identification>
+    <identity format="Extensible Markup Language" mimetype="text/xml" toolname="FITS" toolversion="1.6.0">
+      <tool toolname="Tika" toolversion="2.6.0" />
+      <tool toolname="Jhove" toolversion="1.26.1" />
+      <tool toolname="OIS XML Metadata" toolversion="0.2" />
+      <version toolname="Jhove" toolversion="1.26.1">1.0</version>
+    </identity>
+  </identification>
+  <fileinfo>
+    <filepath toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">/preservation/DC.xml</filepath>
+    <filename toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">DC.xml</filename>
+    <size toolname="OIS File Information" toolversion="1.0">352</size>
+    <md5checksum toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">96d885b47f39f9ece14bad09c11944b3</md5checksum>
+    <fslastmodified toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">1678214965986</fslastmodified>
+  </fileinfo>
+  <filestatus>
+    <well-formed toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">true</well-formed>
+    <valid toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">true</valid>
+  </filestatus>
+  <metadata>
+    <text>
+      <charset toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">UTF-8</charset>
+      <markupBasis toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">XML</markupBasis>
+      <markupBasisVersion toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">1.0</markupBasisVersion>
+      <markupLanguage toolname="OIS XML Metadata" toolversion="0.2" status="SINGLE_RESULT">http://www.openarchives.org/OAI/2.0/oai_dc.xsd</markupLanguage>
+    </text>
+  </metadata>
+  <toolOutput>
+    <tool name="Droid" version="6.5.2">
+      <results xmlns="" />
+    </tool>
+    <tool name="OIS File Information" version="1.0">
+      <fits xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd">
+        <fileinfo>
+          <filepath>/preservation/DC.xml</filepath>
+          <filename>DC.xml</filename>
+          <size>352</size>
+          <md5checksum>96d885b47f39f9ece14bad09c11944b3</md5checksum>
+          <fslastmodified>1678214965986</fslastmodified>
+        </fileinfo>
+      </fits>
+    </tool>
+    <tool name="Tika" version="2.6.0">
+      <metadata xmlns="">
+        <field name="X-TIKA:Parsed-By">
+          <value>org.apache.tika.parser.DefaultParser</value>
+          <value>org.apache.tika.parser.xml.DcXMLParser</value>
+        </field>
+        <field name="X-TIKA:Parsed-By-Full-Set">
+          <value>org.apache.tika.parser.DefaultParser</value>
+          <value>org.apache.tika.parser.xml.DcXMLParser</value>
+        </field>
+        <field name="resourceName">
+          <value>DC.xml</value>
+        </field>
+        <field name="Content-Length">
+          <value>352</value>
+        </field>
+        <field name="dc:identifier">
+          <value>1711.dl:BHOUKCXNAP76F8L</value>
+        </field>
+        <field name="Content-Type">
+          <value>application/xml</value>
+        </field>
+      </metadata>
+    </tool>
+    <tool name="Jhove" version="1.26.1">
+      <repInfo xmlns="" uri="/preservation/DC.xml">
+        <reportingModule release="1.5.2" date="2022-04-22">XML-hul</reportingModule>
+        <lastModified>2023-03-07T18:49:25+00:00</lastModified>
+        <size>352</size>
+        <format>XML</format>
+        <version>1.0</version>
+        <status>Well-Formed and valid</status>
+        <sigMatch>
+          <module>XML-hul</module>
+        </sigMatch>
+        <mimeType>text/xml</mimeType>
+        <properties>
+          <property>
+            <name>XMLMetadata</name>
+            <values arity="List" type="Property">
+              <property>
+                <name>Parser</name>
+                <values arity="Scalar" type="String">
+                  <value>org.apache.xerces.parsers.SAXParser</value>
+                </values>
+              </property>
+              <property>
+                <name>Encoding</name>
+                <values arity="Scalar" type="String">
+                  <value>UTF-8</value>
+                </values>
+              </property>
+              <property>
+                <name>DTD_URI</name>
+                <values arity="Scalar" type="String">
+                  <value>http://www.w3.org/2001/03/XMLSchema.dtd</value>
+                </values>
+              </property>
+              <property>
+                <name>Schemas</name>
+                <values arity="List" type="Property">
+                  <property>
+                    <name>Schema</name>
+                    <values arity="Array" type="Property">
+                      <property>
+                        <name>NamespaceURI</name>
+                        <values arity="Scalar" type="String">
+                          <value>http://www.openarchives.org/OAI/2.0/oai_dc/</value>
+                        </values>
+                      </property>
+                      <property>
+                        <name>SchemaLocation</name>
+                        <values arity="Scalar" type="String">
+                          <value>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</value>
+                        </values>
+                      </property>
+                    </values>
+                  </property>
+                  <property>
+                    <name>Schema</name>
+                    <values arity="Array" type="Property">
+                      <property>
+                        <name>NamespaceURI</name>
+                        <values arity="Scalar" type="String">
+                          <value>http://purl.org/dc/elements/1.1/</value>
+                        </values>
+                      </property>
+                    </values>
+                  </property>
+                </values>
+              </property>
+              <property>
+                <name>Root</name>
+                <values arity="Scalar" type="String">
+                  <value>oai_dc:dc</value>
+                </values>
+              </property>
+              <property>
+                <name>Namespaces</name>
+                <values arity="List" type="Property">
+                  <property>
+                    <name>Namespace</name>
+                    <values arity="Array" type="Property">
+                      <property>
+                        <name>Prefix</name>
+                        <values arity="Scalar" type="String">
+                          <value>oai_dc</value>
+                        </values>
+                      </property>
+                      <property>
+                        <name>URI</name>
+                        <values arity="Scalar" type="String">
+                          <value>http://www.openarchives.org/OAI/2.0/oai_dc/</value>
+                        </values>
+                      </property>
+                    </values>
+                  </property>
+                  <property>
+                    <name>Namespace</name>
+                    <values arity="Array" type="Property">
+                      <property>
+                        <name>Prefix</name>
+                        <values arity="Scalar" type="String">
+                          <value>dc</value>
+                        </values>
+                      </property>
+                      <property>
+                        <name>URI</name>
+                        <values arity="Scalar" type="String">
+                          <value>http://purl.org/dc/elements/1.1/</value>
+                        </values>
+                      </property>
+                    </values>
+                  </property>
+                  <property>
+                    <name>Namespace</name>
+                    <values arity="Array" type="Property">
+                      <property>
+                        <name>Prefix</name>
+                        <values arity="Scalar" type="String">
+                          <value>xsi</value>
+                        </values>
+                      </property>
+                      <property>
+                        <name>URI</name>
+                        <values arity="Scalar" type="String">
+                          <value>http://www.w3.org/2001/XMLSchema-instance</value>
+                        </values>
+                      </property>
+                    </values>
+                  </property>
+                </values>
+              </property>
+            </values>
+          </property>
+        </properties>
+      </repInfo>
+    </tool>
+    <tool name="OIS XML Metadata" version="0.2">
+      <fits xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd">
+        <identification>
+          <identity format="Extensible Markup Language" mimetype="text/xml" />
+        </identification>
+        <metadata>
+          <text>
+            <markupLanguage>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</markupLanguage>
+          </text>
+        </metadata>
+      </fits>
+    </tool>
+  </toolOutput>
+  <statistics fitsExecutionTime="3417">
+    <tool toolname="MediaInfo" toolversion="22.09" status="did not run" />
+    <tool toolname="OIS Audio Information" toolversion="0.1" status="did not run" />
+    <tool toolname="ADL Tool" toolversion="0.1" status="did not run" />
+    <tool toolname="Droid" toolversion="6.5.2" executionTime="87" />
+    <tool toolname="file utility" toolversion="5.43" status="did not run" />
+    <tool toolname="OIS File Information" toolversion="1.0" executionTime="78" />
+    <tool toolname="Exiftool" toolversion="12.50" status="did not run" />
+    <tool toolname="Tika" toolversion="2.6.0" executionTime="188" />
+    <tool toolname="Jhove" toolversion="1.26.1" executionTime="3381" />
+    <tool toolname="OIS XML Metadata" toolversion="0.2" executionTime="62" />
+    <tool toolname="NLNZ Metadata Extractor" toolversion="3.6GA" status="did not run" />
+  </statistics>
+</fits>

@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fits xmlns="http://hul.harvard.edu/ois/xml/ns/fits/fits_output" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd" version="1.6.0" timestamp="3/7/23, 8:18 PM">
+  <identification>
+    <identity format="Tagged Image File Format" mimetype="image/tiff" toolname="FITS" toolversion="1.6.0">
+      <tool toolname="Droid" toolversion="6.5.2" />
+      <tool toolname="Exiftool" toolversion="12.50" />
+      <tool toolname="Tika" toolversion="2.6.0" />
+      <tool toolname="Jhove" toolversion="1.26.1" />
+      <version toolname="Jhove" toolversion="1.26.1">6.0</version>
+      <externalIdentifier toolname="Droid" toolversion="6.5.2" type="puid">fmt/353</externalIdentifier>
+    </identity>
+  </identification>
+  <fileinfo>
+    <filepath toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">/preservation/MASTER0.tif</filepath>
+    <filename toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">MASTER0.tif</filename>
+    <size toolname="OIS File Information" toolversion="1.0">17666868</size>
+    <md5checksum toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">fcc7f08d223fbbfe3b949d2a3ffa35e7</md5checksum>
+    <fslastmodified toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">1673380018000</fslastmodified>
+    <lastmodified toolname="Exiftool" toolversion="12.50">2014-04-03T10:54:18</lastmodified>
+    <created toolname="Exiftool" toolversion="12.50" status="CONFLICT">2014-02-19T15:50:51Z</created>
+    <created toolname="Tika" toolversion="2.6.0" status="CONFLICT">2014-04-03T10:54:18</created>
+    <creatingApplicationName toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">Adobe Photoshop CS6 (Macintosh)</creatingApplicationName>
+  </fileinfo>
+  <filestatus>
+    <well-formed toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">true</well-formed>
+    <valid toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">true</valid>
+  </filestatus>
+  <metadata>
+    <image>
+      <compressionScheme toolname="Exiftool" toolversion="12.50">Uncompressed</compressionScheme>
+      <imageWidth toolname="Exiftool" toolversion="12.50">1993</imageWidth>
+      <imageHeight toolname="Exiftool" toolversion="12.50">2951</imageHeight>
+      <colorSpace toolname="Exiftool" toolversion="12.50">RGB</colorSpace>
+      <referenceBlackWhite toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">0 255 0 255 0 255</referenceBlackWhite>
+      <iccProfileName toolname="Exiftool" toolversion="12.50">Adobe RGB (1998)</iccProfileName>
+      <iccProfileVersion toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">2.1.0</iccProfileVersion>
+      <orientation toolname="Exiftool" toolversion="12.50">normal*</orientation>
+      <samplingFrequencyUnit toolname="Exiftool" toolversion="12.50">in.</samplingFrequencyUnit>
+      <xSamplingFrequency toolname="Exiftool" toolversion="12.50">300</xSamplingFrequency>
+      <ySamplingFrequency toolname="Exiftool" toolversion="12.50">300</ySamplingFrequency>
+      <bitsPerSample toolname="Exiftool" toolversion="12.50">8 8 8</bitsPerSample>
+      <samplesPerPixel toolname="Exiftool" toolversion="12.50">3</samplesPerPixel>
+      <scanningSoftwareName toolname="Exiftool" toolversion="12.50">Adobe Photoshop CS6 (Macintosh)</scanningSoftwareName>
+      <byteOrder toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">little endian</byteOrder>
+    </image>
+  </metadata>
+  <toolOutput>
+    <tool name="Droid" version="6.5.2">
+      <results xmlns="">
+        <result>
+          <filePuid>fmt/353</filePuid>
+          <formatName>Tagged Image File Format</formatName>
+          <mimeType>image/tiff</mimeType>
+          <version>null</version>
+        </result>
+      </results>
+    </tool>
+    <tool name="file utility" version="5.43">
+      <fileUtilityOutput xmlns="">
+        <rawOutput>TIFF image data, little-endian, direntries=22, height=2951, bps=278, compression=none, PhotometricInterpretation=RGB, orientation=upper-left, width=1993
+image/tiff; charset=binary</rawOutput>
+        <mimetype>image/tiff</mimetype>
+        <format>TIFF image data, little-endian, direntries=22, height=2951, bps=278, compression=none, PhotometricInterpretation=RGB, orientation=upper-left, width=1993</format>
+      </fileUtilityOutput>
+    </tool>
+    <tool name="OIS File Information" version="1.0">
+      <fits xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd">
+        <fileinfo>
+          <filepath>/preservation/MASTER0.tif</filepath>
+          <filename>MASTER0.tif</filename>
+          <size>17666868</size>
+          <md5checksum>fcc7f08d223fbbfe3b949d2a3ffa35e7</md5checksum>
+          <fslastmodified>1673380018000</fslastmodified>
+        </fileinfo>
+      </fits>
+    </tool>
+    <tool name="Exiftool" version="12.50">
+      <exiftool xmlns="">
+        <ExifToolVersion>12.50</ExifToolVersion>
+        <FileName>MASTER0.tif</FileName>
+        <Directory>.</Directory>
+        <FileSize>18 MB</FileSize>
+        <FileModifyDate>2023:01:10 19:46:58+00:00</FileModifyDate>
+        <FileAccessDate>2023:03:07 20:18:43+00:00</FileAccessDate>
+        <FileInodeChangeDate>2023:03:07 20:18:05+00:00</FileInodeChangeDate>
+        <FilePermissions>-rw-r--r--</FilePermissions>
+        <FileType>TIFF</FileType>
+        <FileTypeExtension>tif</FileTypeExtension>
+        <MIMEType>image/tiff</MIMEType>
+        <ExifByteOrder>Little-endian (Intel, II)</ExifByteOrder>
+        <SubfileType>Full-resolution image</SubfileType>
+        <ImageWidth>1993</ImageWidth>
+        <ImageHeight>2951</ImageHeight>
+        <BitsPerSample>8 8 8</BitsPerSample>
+        <Compression>Uncompressed</Compression>
+        <PhotometricInterpretation>RGB</PhotometricInterpretation>
+        <StripOffsets>22792</StripOffsets>
+        <Orientation>Horizontal (normal)</Orientation>
+        <SamplesPerPixel>3</SamplesPerPixel>
+        <RowsPerStrip>2951</RowsPerStrip>
+        <StripByteCounts>17644029</StripByteCounts>
+        <XResolution>300</XResolution>
+        <YResolution>300</YResolution>
+        <PlanarConfiguration>Chunky</PlanarConfiguration>
+        <ResolutionUnit>inches</ResolutionUnit>
+        <Software>Adobe Photoshop CS6 (Macintosh)</Software>
+        <ModifyDate>2014:04:03 10:54:18</ModifyDate>
+        <XMPToolkit>Adobe XMP Core 5.3-c011 66.145661, 2012/02/06-14:56:27</XMPToolkit>
+        <CreateDate>2014:02:19 09:50:51-06:00</CreateDate>
+        <ModifyDate>2014:04:03 10:54:18-05:00</ModifyDate>
+        <MetadataDate>2014:04:03 10:54:18-05:00</MetadataDate>
+        <CreatorTool>Adobe Photoshop CS3 Macintosh</CreatorTool>
+        <Format>image/tiff</Format>
+        <ColorMode>RGB</ColorMode>
+        <ICCProfileName>Adobe RGB (1998)</ICCProfileName>
+        <InstanceID>xmp.iid:57100BE7112068118C14C191C87C6A69</InstanceID>
+        <DocumentID>uuid:AEE6483A5CABE3118A79BB53C1E9D3C8</DocumentID>
+        <OriginalDocumentID>uuid:AEE6483A5CABE3118A79BB53C1E9D3C8</OriginalDocumentID>
+        <HistoryAction>saved</HistoryAction>
+        <HistoryInstanceID>xmp.iid:57100BE7112068118C14C191C87C6A69</HistoryInstanceID>
+        <HistoryWhen>2014:04:03 10:54:18-05:00</HistoryWhen>
+        <HistorySoftwareAgent>Adobe Photoshop CS6 (Macintosh)</HistorySoftwareAgent>
+        <HistoryChanged>/</HistoryChanged>
+        <Marked>False</Marked>
+        <CurrentIPTCDigest>cdcffa7da8c7be09057076aeaf05c34e</CurrentIPTCDigest>
+        <CodedCharacterSet>UTF8</CodedCharacterSet>
+        <ApplicationRecordVersion>0</ApplicationRecordVersion>
+        <IPTCDigest>cdcffa7da8c7be09057076aeaf05c34e</IPTCDigest>
+        <XResolution>300</XResolution>
+        <DisplayedUnitsX>inches</DisplayedUnitsX>
+        <YResolution>300</YResolution>
+        <DisplayedUnitsY>inches</DisplayedUnitsY>
+        <PrintStyle>Centered</PrintStyle>
+        <PrintPosition>0 0</PrintPosition>
+        <PrintScale>1</PrintScale>
+        <GlobalAngle>30</GlobalAngle>
+        <GlobalAltitude>30</GlobalAltitude>
+        <CopyrightFlag>False</CopyrightFlag>
+        <SlicesGroupName>0004</SlicesGroupName>
+        <NumSlices>1</NumSlices>
+        <PixelAspectRatio>1</PixelAspectRatio>
+        <PhotoshopThumbnail>(Binary data 5291 bytes, use -b option to extract)</PhotoshopThumbnail>
+        <HasRealMergedData>Yes</HasRealMergedData>
+        <WriterName>Adobe Photoshop</WriterName>
+        <ReaderName>Adobe Photoshop CS6</ReaderName>
+        <ColorSpace>Uncalibrated</ColorSpace>
+        <ExifImageWidth>1993</ExifImageWidth>
+        <ExifImageHeight>2951</ExifImageHeight>
+        <ProfileCMMType>Adobe Systems Inc.</ProfileCMMType>
+        <ProfileVersion>2.1.0</ProfileVersion>
+        <ProfileClass>Display Device Profile</ProfileClass>
+        <ColorSpaceData>RGB</ColorSpaceData>
+        <ProfileConnectionSpace>XYZ</ProfileConnectionSpace>
+        <ProfileDateTime>1999:06:03 00:00:00</ProfileDateTime>
+        <ProfileFileSignature>acsp</ProfileFileSignature>
+        <PrimaryPlatform>Apple Computer Inc.</PrimaryPlatform>
+        <CMMFlags>Not Embedded, Independent</CMMFlags>
+        <DeviceManufacturer>none</DeviceManufacturer>
+        <DeviceAttributes>Reflective, Glossy, Positive, Color</DeviceAttributes>
+        <RenderingIntent>Media-Relative Colorimetric</RenderingIntent>
+        <ConnectionSpaceIlluminant>0.9642 1 0.82491</ConnectionSpaceIlluminant>
+        <ProfileCreator>Adobe Systems Inc.</ProfileCreator>
+        <ProfileID>0</ProfileID>
+        <ProfileCopyright>Copyright 1999 Adobe Systems Incorporated</ProfileCopyright>
+        <ProfileDescription>Adobe RGB (1998)</ProfileDescription>
+        <MediaWhitePoint>0.95045 1 1.08905</MediaWhitePoint>
+        <MediaBlackPoint>0 0 0</MediaBlackPoint>
+        <RedTRC>(Binary data 14 bytes, use -b option to extract)</RedTRC>
+        <GreenTRC>(Binary data 14 bytes, use -b option to extract)</GreenTRC>
+        <BlueTRC>(Binary data 14 bytes, use -b option to extract)</BlueTRC>
+        <RedMatrixColumn>0.60974 0.31111 0.01947</RedMatrixColumn>
+        <GreenMatrixColumn>0.20528 0.62567 0.06087</GreenMatrixColumn>
+        <BlueMatrixColumn>0.14919 0.06322 0.74457</BlueMatrixColumn>
+        <ImageSize>1993x2951</ImageSize>
+        <Megapixels>5.9</Megapixels>
+      </exiftool>
+    </tool>
+    <tool name="Tika" version="2.6.0">
+      <metadata xmlns="">
+        <field name="ICC:Profile Connection Space">
+          <value>XYZ</value>
+        </field>
+        <field name="Slices">
+          <value>0004 (0,0,2951,1993) 1 Slices</value>
+        </field>
+        <field name="ICC:Profile Copyright">
+          <value>Copyright 1999 Adobe Systems Incorporated</value>
+        </field>
+        <field name="X-TIKA:Parsed-By-Full-Set">
+          <value>org.apache.tika.parser.DefaultParser</value>
+          <value>org.apache.tika.parser.image.TiffParser</value>
+        </field>
+        <field name="ICC:Class">
+          <value>Display Device</value>
+        </field>
+        <field name="ICC:Green Colorant">
+          <value>(0.2053, 0.6257, 0.0609)</value>
+        </field>
+        <field name="xmpMM:History:Action">
+          <value>saved</value>
+        </field>
+        <field name="Print Style">
+          <value>[557 values]</value>
+        </field>
+        <field name="Exif SubIFD:Exif Image Width">
+          <value>1993 pixels</value>
+        </field>
+        <field name="ICC:Device manufacturer">
+          <value>none</value>
+        </field>
+        <field name="Exif IFD0:X Resolution">
+          <value>300 dots per inch</value>
+        </field>
+        <field name="tiff:ResolutionUnit">
+          <value>Inch</value>
+        </field>
+        <field name="ICC:Signature">
+          <value>acsp</value>
+        </field>
+        <field name="Copyright Flag">
+          <value>No</value>
+        </field>
+        <field name="ICC:Green TRC">
+          <value>0.0085908</value>
+        </field>
+        <field name="ICC:Media White Point">
+          <value>(0.9505, 1, 1.0891)</value>
+        </field>
+        <field name="Version Info">
+          <value>1 (Adobe Photoshop, Adobe Photoshop CS6) 1</value>
+        </field>
+        <field name="Exif IFD0:Strip Byte Counts">
+          <value>17644029 bytes</value>
+        </field>
+        <field name="ICC:CMM Type">
+          <value>ADBE</value>
+        </field>
+        <field name="xmpMM:History:When">
+          <value>2014-04-03T10:54:18Z</value>
+        </field>
+        <field name="Exif IFD0:New Subfile Type">
+          <value>Full-resolution image</value>
+        </field>
+        <field name="Exif IFD0:Planar Configuration">
+          <value>Chunky (contiguous for each subsampling pixel)</value>
+        </field>
+        <field name="Thumbnail Data">
+          <value>JpegRGB, 108x160, Decomp 51840 bytes, 1572865 bpp, 5291 bytes</value>
+        </field>
+        <field name="xmpMM:History:SoftwareAgent">
+          <value>Adobe Photoshop CS6 (Macintosh)</value>
+        </field>
+        <field name="Exif IFD0:Bits Per Sample">
+          <value>8 8 8 bits/component/pixel</value>
+        </field>
+        <field name="tiff:BitsPerSample">
+          <value>8</value>
+        </field>
+        <field name="Application Record Version">
+          <value>0</value>
+        </field>
+        <field name="Caption Digest">
+          <value>205 207 250 125 168 199 190 9 5 112 118 174 175 5 195 78</value>
+        </field>
+        <field name="xmpMM:History:InstanceID">
+          <value>xmp.iid:57100BE7112068118C14C191C87C6A69</value>
+        </field>
+        <field name="Resolution Info">
+          <value>300x300 DPI</value>
+        </field>
+        <field name="tiff:SamplesPerPixel">
+          <value>3</value>
+        </field>
+        <field name="resourceName">
+          <value>MASTER0.tif</value>
+        </field>
+        <field name="Color Halftoning Information">
+          <value>[72 values]</value>
+        </field>
+        <field name="Exif IFD0:Orientation">
+          <value>Top, left side (Horizontal / normal)</value>
+        </field>
+        <field name="tiff:Orientation">
+          <value>1</value>
+        </field>
+        <field name="ICC:Version">
+          <value>2.1.0</value>
+        </field>
+        <field name="tiff:Software">
+          <value>Adobe Photoshop CS6 (Macintosh)</value>
+        </field>
+        <field name="ICC:Profile Size">
+          <value>560</value>
+        </field>
+        <field name="Color Transfer Functions">
+          <value>[112 values]</value>
+        </field>
+        <field name="X-TIKA:Parsed-By">
+          <value>org.apache.tika.parser.DefaultParser</value>
+          <value>org.apache.tika.parser.image.TiffParser</value>
+        </field>
+        <field name="XMP Value Count">
+          <value>16</value>
+        </field>
+        <field name="Global Angle">
+          <value>30</value>
+        </field>
+        <field name="ICC:Blue Colorant">
+          <value>(0.1492, 0.0632, 0.7446)</value>
+        </field>
+        <field name="Exif IFD0:Software">
+          <value>Adobe Photoshop CS6 (Macintosh)</value>
+        </field>
+        <field name="ICC:Rendering Intent">
+          <value>Media-Relative Colorimetric</value>
+        </field>
+        <field name="ICC:Tag Count">
+          <value>10</value>
+        </field>
+        <field name="Exif IFD0:Date/Time">
+          <value>2014:04:03 10:54:18</value>
+        </field>
+        <field name="tiff:YResolution">
+          <value>300.0</value>
+        </field>
+        <field name="Exif IFD0:Strip Offsets">
+          <value>22792</value>
+        </field>
+        <field name="Seed Number">
+          <value>1</value>
+        </field>
+        <field name="ICC:Red TRC">
+          <value>0.0085908</value>
+        </field>
+        <field name="Coded Character Set">
+          <value>UTF-8</value>
+        </field>
+        <field name="tiff:ImageLength">
+          <value>2951</value>
+        </field>
+        <field name="dcterms:created">
+          <value>2014-04-03T10:54:18</value>
+        </field>
+        <field name="dcterms:modified">
+          <value>2014-04-03T10:54:18</value>
+        </field>
+        <field name="ICC:Profile Date/Time">
+          <value>1999:06:03 00:00:00</value>
+        </field>
+        <field name="xmpMM:DocumentID">
+          <value>uuid:AEE6483A5CABE3118A79BB53C1E9D3C8</value>
+        </field>
+        <field name="Exif SubIFD:Color Space">
+          <value>Undefined</value>
+        </field>
+        <field name="Exif IFD0:Image Height">
+          <value>2951 pixels</value>
+        </field>
+        <field name="Print Info 2">
+          <value>[229 values]</value>
+        </field>
+        <field name="ICC:Profile Description">
+          <value>Adobe RGB (1998)</value>
+        </field>
+        <field name="File Size">
+          <value>17666868 bytes</value>
+        </field>
+        <field name="Global Altitude">
+          <value>30</value>
+        </field>
+        <field name="Exif IFD0:Image Width">
+          <value>1993 pixels</value>
+        </field>
+        <field name="Exif IFD0:Samples Per Pixel">
+          <value>3 samples/pixel</value>
+        </field>
+        <field name="Exif IFD0:Rows Per Strip">
+          <value>2951 rows/strip</value>
+        </field>
+        <field name="Grid and Guides Information">
+          <value>0 0 0 1 0 0 2 64 0 0 2 64 0 0 0 0</value>
+        </field>
+        <field name="File Name">
+          <value>MASTER0.tif</value>
+        </field>
+        <field name="Content-Length">
+          <value>17666868</value>
+        </field>
+        <field name="Exif IFD0:Resolution Unit">
+          <value>Inch</value>
+        </field>
+        <field name="ICC:Color space">
+          <value>RGB</value>
+        </field>
+        <field name="Content-Type">
+          <value>image/tiff</value>
+        </field>
+        <field name="ICC:Blue TRC">
+          <value>0.0085908</value>
+        </field>
+        <field name="ICC:XYZ values">
+          <value>0.964 1 0.825</value>
+        </field>
+        <field name="File Modified Date">
+          <value>Tue Jan 10 19:46:58 +00:00 2023</value>
+        </field>
+        <field name="tiff:XResolution">
+          <value>300.0</value>
+        </field>
+        <field name="Pixel Aspect Ratio">
+          <value>1.0</value>
+        </field>
+        <field name="Print Flags">
+          <value>0 0 0 0 0 0 0 0 1</value>
+        </field>
+        <field name="ICC:Media Black Point">
+          <value>(0, 0, 0)</value>
+        </field>
+        <field name="Exif SubIFD:Exif Image Height">
+          <value>2951 pixels</value>
+        </field>
+        <field name="Exif IFD0:Compression">
+          <value>Uncompressed</value>
+        </field>
+        <field name="Print Flags Information">
+          <value>0 1 0 0 0 0 0 0 0 1</value>
+        </field>
+        <field name="URL List">
+          <value>0</value>
+        </field>
+        <field name="ICC:Primary Platform">
+          <value>Apple Computer, Inc.</value>
+        </field>
+        <field name="Exif IFD0:Photometric Interpretation">
+          <value>RGB</value>
+        </field>
+        <field name="Print Scale">
+          <value>Centered, Scale 1.0</value>
+        </field>
+        <field name="ICC:Red Colorant">
+          <value>(0.6097, 0.3111, 0.0195)</value>
+        </field>
+        <field name="tiff:ImageWidth">
+          <value>1993</value>
+        </field>
+        <field name="Exif IFD0:Y Resolution">
+          <value>300 dots per inch</value>
+        </field>
+      </metadata>
+    </tool>
+    <tool name="Jhove" version="1.26.1">
+      <repInfo xmlns="" uri="/preservation/MASTER0.tif">
+        <reportingModule release="1.9.3" date="2022-04-22">TIFF-hul</reportingModule>
+        <lastModified>2023-01-10T19:46:58+00:00</lastModified>
+        <size>17666868</size>
+        <format>TIFF</format>
+        <version>6.0</version>
+        <status>Well-Formed and valid</status>
+        <sigMatch>
+          <module>TIFF-hul</module>
+        </sigMatch>
+        <mimeType>image/tiff</mimeType>
+        <profiles>
+          <profile>Baseline RGB (Class R)</profile>
+          <profile>DLF Benchmark for Faithful Digital Reproductions of Monographs and Serials: color</profile>
+        </profiles>
+        <properties>
+          <property>
+            <name>TIFFMetadata</name>
+            <values arity="Array" type="Property">
+              <property>
+                <name>ByteOrder</name>
+                <values arity="Scalar" type="String">
+                  <value>little-endian</value>
+                </values>
+              </property>
+              <property>
+                <name>IFDs</name>
+                <values arity="List" type="Property">
+                  <property>
+                    <name>Number</name>
+                    <values arity="Scalar" type="Integer">
+                      <value>2</value>
+                    </values>
+                  </property>
+                  <property>
+                    <name>IFD</name>
+                    <values arity="Array" type="Property">
+                      <property>
+                        <name>Offset</name>
+                        <values arity="Scalar" type="Long">
+                          <value>8</value>
+                        </values>
+                      </property>
+                      <property>
+                        <name>Type</name>
+                        <values arity="Scalar" type="String">
+                          <value>TIFF</value>
+                        </values>
+                      </property>
+                      <property>
+                        <name>Entries</name>
+                        <values arity="List" type="Property">
+                          <property>
+                            <name>NisoImageMetadata</name>
+                            <values arity="Scalar" type="NISOImageMetadata">
+                              <value>
+                                <mix:mix xmlns:mix="http://www.loc.gov/mix/v20" xsi:schemaLocation="http://www.loc.gov/mix/v20 http://www.loc.gov/standards/mix/mix20/mix20.xsd">
+                                  <mix:BasicDigitalObjectInformation>
+                                    <mix:ObjectIdentifier>
+                                      <mix:objectIdentifierType>JHOVE</mix:objectIdentifierType>
+                                    </mix:ObjectIdentifier>
+                                    <mix:FormatDesignation>
+                                      <mix:formatName>image/tiff</mix:formatName>
+                                    </mix:FormatDesignation>
+                                    <mix:byteOrder>little endian</mix:byteOrder>
+                                    <mix:Compression>
+                                      <mix:compressionScheme>Uncompressed</mix:compressionScheme>
+                                    </mix:Compression>
+                                  </mix:BasicDigitalObjectInformation>
+                                  <mix:BasicImageInformation>
+                                    <mix:BasicImageCharacteristics>
+                                      <mix:imageWidth>1993</mix:imageWidth>
+                                      <mix:imageHeight>2951</mix:imageHeight>
+                                      <mix:PhotometricInterpretation>
+                                        <mix:colorSpace>RGB</mix:colorSpace>
+                                        <mix:ColorProfile>
+                                          <mix:IccProfile>
+                                            <mix:iccProfileName>Adobe RGB (1998)</mix:iccProfileName>
+                                          </mix:IccProfile>
+                                        </mix:ColorProfile>
+                                        <mix:ReferenceBlackWhite>
+                                          <mix:Component>
+                                            <mix:componentPhotometricInterpretation>R</mix:componentPhotometricInterpretation>
+                                            <mix:footroom>
+                                              <mix:numerator>0</mix:numerator>
+                                            </mix:footroom>
+                                            <mix:headroom>
+                                              <mix:numerator>255</mix:numerator>
+                                            </mix:headroom>
+                                          </mix:Component>
+                                          <mix:Component>
+                                            <mix:componentPhotometricInterpretation>G</mix:componentPhotometricInterpretation>
+                                            <mix:footroom>
+                                              <mix:numerator>0</mix:numerator>
+                                            </mix:footroom>
+                                            <mix:headroom>
+                                              <mix:numerator>255</mix:numerator>
+                                            </mix:headroom>
+                                          </mix:Component>
+                                          <mix:Component>
+                                            <mix:componentPhotometricInterpretation>B</mix:componentPhotometricInterpretation>
+                                            <mix:footroom>
+                                              <mix:numerator>0</mix:numerator>
+                                            </mix:footroom>
+                                            <mix:headroom>
+                                              <mix:numerator>255</mix:numerator>
+                                            </mix:headroom>
+                                          </mix:Component>
+                                        </mix:ReferenceBlackWhite>
+                                      </mix:PhotometricInterpretation>
+                                    </mix:BasicImageCharacteristics>
+                                  </mix:BasicImageInformation>
+                                  <mix:ImageCaptureMetadata>
+                                    <mix:GeneralCaptureInformation>
+                                      <mix:dateTimeCreated>2014-04-03T10:54:18</mix:dateTimeCreated>
+                                    </mix:GeneralCaptureInformation>
+                                    <mix:ScannerCapture>
+                                      <mix:ScanningSystemSoftware>
+                                        <mix:scanningSoftwareName>Adobe Photoshop CS6 (Macintosh)</mix:scanningSoftwareName>
+                                      </mix:ScanningSystemSoftware>
+                                    </mix:ScannerCapture>
+                                    <mix:orientation>normal*</mix:orientation>
+                                  </mix:ImageCaptureMetadata>
+                                  <mix:ImageAssessmentMetadata>
+                                    <mix:SpatialMetrics>
+                                      <mix:samplingFrequencyUnit>in.</mix:samplingFrequencyUnit>
+                                      <mix:xSamplingFrequency>
+                                        <mix:numerator>3000000</mix:numerator>
+                                        <mix:denominator>10000</mix:denominator>
+                                      </mix:xSamplingFrequency>
+                                      <mix:ySamplingFrequency>
+                                        <mix:numerator>3000000</mix:numerator>
+                                        <mix:denominator>10000</mix:denominator>
+                                      </mix:ySamplingFrequency>
+                                    </mix:SpatialMetrics>
+                                    <mix:ImageColorEncoding>
+                                      <mix:BitsPerSample>
+                                        <mix:bitsPerSampleValue>8</mix:bitsPerSampleValue>
+                                        <mix:bitsPerSampleValue>8</mix:bitsPerSampleValue>
+                                        <mix:bitsPerSampleValue>8</mix:bitsPerSampleValue>
+                                        <mix:bitsPerSampleUnit>integer</mix:bitsPerSampleUnit>
+                                      </mix:BitsPerSample>
+                                      <mix:samplesPerPixel>3</mix:samplesPerPixel>
+                                    </mix:ImageColorEncoding>
+                                  </mix:ImageAssessmentMetadata>
+                                </mix:mix>
+                              </value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>DateTime</name>
+                            <values arity="Scalar" type="String">
+                              <value>2014:04:03 10:54:18</value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>NewSubfileType</name>
+                            <values arity="Scalar" type="Long">
+                              <value>0</value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>SampleFormat</name>
+                            <values arity="Array" type="Integer">
+                              <value>1</value>
+                              <value>1</value>
+                              <value>1</value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>MinSampleValue</name>
+                            <values arity="Array" type="Integer">
+                              <value>0</value>
+                              <value>0</value>
+                              <value>0</value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>MaxSampleValue</name>
+                            <values arity="Array" type="Integer">
+                              <value>255</value>
+                              <value>255</value>
+                              <value>255</value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>TransferRange</name>
+                            <values arity="Array" type="Integer">
+                              <value>0</value>
+                              <value>255</value>
+                              <value>0</value>
+                              <value>255</value>
+                              <value>0</value>
+                              <value>255</value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>Threshholding</name>
+                            <values arity="Scalar" type="Integer">
+                              <value>1</value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>TIFFITProperties</name>
+                            <values arity="List" type="Property">
+                              <property>
+                                <name>BackgroundColorIndicator</name>
+                                <values arity="Scalar" type="String">
+                                  <value>background not defined</value>
+                                </values>
+                              </property>
+                              <property>
+                                <name>ImageColorIndicator</name>
+                                <values arity="Scalar" type="String">
+                                  <value>image not defined</value>
+                                </values>
+                              </property>
+                              <property>
+                                <name>TransparencyIndicator</name>
+                                <values arity="Scalar" type="String">
+                                  <value>no transparency</value>
+                                </values>
+                              </property>
+                              <property>
+                                <name>PixelIntensityRange</name>
+                                <values arity="Array" type="Integer">
+                                  <value>0</value>
+                                  <value>255</value>
+                                </values>
+                              </property>
+                              <property>
+                                <name>RasterPadding</name>
+                                <values arity="Scalar" type="String">
+                                  <value>1 byte</value>
+                                </values>
+                              </property>
+                              <property>
+                                <name>BitsPerRunLength</name>
+                                <values arity="Scalar" type="Integer">
+                                  <value>8</value>
+                                </values>
+                              </property>
+                              <property>
+                                <name>BitsPerExtendedRunLength</name>
+                                <values arity="Scalar" type="Integer">
+                                  <value>16</value>
+                                </values>
+                              </property>
+                            </values>
+                          </property>
+                          <property>
+                            <name>TIFFEPProperties</name>
+                            <values arity="List" type="Property">
+                              <property>
+                                <name>IPTCNAA</name>
+                                <values arity="Array" type="Long">
+                                  <value>28</value>
+                                  <value>1</value>
+                                  <value>90</value>
+                                  <value>0</value>
+                                  <value>3</value>
+                                  <value>27</value>
+                                  <value>37</value>
+                                  <value>71</value>
+                                  <value>28</value>
+                                  <value>2</value>
+                                  <value>0</value>
+                                  <value>0</value>
+                                  <value>2</value>
+                                  <value>0</value>
+                                  <value>0</value>
+                                </values>
+                              </property>
+                              <property>
+                                <name>ICCProfile</name>
+                                <values arity="Scalar" type="Boolean">
+                                  <value>true</value>
+                                </values>
+                              </property>
+                            </values>
+                          </property>
+                          <property>
+                            <name>XMP</name>
+                            <values arity="Scalar" type="String">
+                              <value>&lt;x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.3-c011 66.145661, 2012/02/06-14:56:27        "&gt;
+   &lt;rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"&gt;
+      &lt;rdf:Description rdf:about=""
+            xmlns:xmp="http://ns.adobe.com/xap/1.0/"&gt;
+         &lt;xmp:CreateDate&gt;2014-02-19T09:50:51-06:00&lt;/xmp:CreateDate&gt;
+         &lt;xmp:ModifyDate&gt;2014-04-03T10:54:18-05:00&lt;/xmp:ModifyDate&gt;
+         &lt;xmp:MetadataDate&gt;2014-04-03T10:54:18-05:00&lt;/xmp:MetadataDate&gt;
+         &lt;xmp:CreatorTool&gt;Adobe Photoshop CS3 Macintosh&lt;/xmp:CreatorTool&gt;
+      &lt;/rdf:Description&gt;
+      &lt;rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/"&gt;
+         &lt;dc:format&gt;image/tiff&lt;/dc:format&gt;
+      &lt;/rdf:Description&gt;
+      &lt;rdf:Description rdf:about=""
+            xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/"&gt;
+         &lt;photoshop:ColorMode&gt;3&lt;/photoshop:ColorMode&gt;
+         &lt;photoshop:ICCProfile&gt;Adobe RGB (1998)&lt;/photoshop:ICCProfile&gt;
+      &lt;/rdf:Description&gt;
+      &lt;rdf:Description rdf:about=""
+            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
+            xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"&gt;
+         &lt;xmpMM:InstanceID&gt;xmp.iid:57100BE7112068118C14C191C87C6A69&lt;/xmpMM:InstanceID&gt;
+         &lt;xmpMM:DocumentID&gt;uuid:AEE6483A5CABE3118A79BB53C1E9D3C8&lt;/xmpMM:DocumentID&gt;
+         &lt;xmpMM:OriginalDocumentID&gt;uuid:AEE6483A5CABE3118A79BB53C1E9D3C8&lt;/xmpMM:OriginalDocumentID&gt;
+         &lt;xmpMM:History&gt;
+            &lt;rdf:Seq&gt;
+               &lt;rdf:li rdf:parseType="Resource"&gt;
+                  &lt;stEvt:action&gt;saved&lt;/stEvt:action&gt;
+                  &lt;stEvt:instanceID&gt;xmp.iid:57100BE7112068118C14C191C87C6A69&lt;/stEvt:instanceID&gt;
+                  &lt;stEvt:when&gt;2014-04-03T10:54:18-05:00&lt;/stEvt:when&gt;
+                  &lt;stEvt:softwareAgent&gt;Adobe Photoshop CS6 (Macintosh)&lt;/stEvt:softwareAgent&gt;
+                  &lt;stEvt:changed&gt;/&lt;/stEvt:changed&gt;
+               &lt;/rdf:li&gt;
+            &lt;/rdf:Seq&gt;
+         &lt;/xmpMM:History&gt;
+      &lt;/rdf:Description&gt;
+      &lt;rdf:Description rdf:about=""
+            xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/"&gt;
+         &lt;xmpRights:Marked&gt;False&lt;/xmpRights:Marked&gt;
+      &lt;/rdf:Description&gt;
+   &lt;/rdf:RDF&gt;
+&lt;/x:xmpmeta&gt;</value>
+                            </values>
+                          </property>
+                        </values>
+                      </property>
+                    </values>
+                  </property>
+                  <property>
+                    <name>IFD</name>
+                    <values arity="Array" type="Property">
+                      <property>
+                        <name>Offset</name>
+                        <values arity="Scalar" type="Long">
+                          <value>17666824</value>
+                        </values>
+                      </property>
+                      <property>
+                        <name>Type</name>
+                        <values arity="Scalar" type="String">
+                          <value>Exif</value>
+                        </values>
+                      </property>
+                      <property>
+                        <name>Entries</name>
+                        <values arity="List" type="Property">
+                          <property>
+                            <name>FlashpixVersion</name>
+                            <values arity="Scalar" type="String">
+                              <value>0100</value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>ColorSpace</name>
+                            <values arity="Scalar" type="String">
+                              <value>uncalibrated</value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>PixelXDimension</name>
+                            <values arity="Scalar" type="Long">
+                              <value>1993</value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>PixelYDimension</name>
+                            <values arity="Scalar" type="Long">
+                              <value>2951</value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>FocalPlaneResolutionUnit</name>
+                            <values arity="Scalar" type="String">
+                              <value>inches</value>
+                            </values>
+                          </property>
+                          <property>
+                            <name>Contrast</name>
+                            <values arity="Scalar" type="String">
+                              <value>normal</value>
+                            </values>
+                          </property>
+                        </values>
+                      </property>
+                    </values>
+                  </property>
+                </values>
+              </property>
+            </values>
+          </property>
+        </properties>
+      </repInfo>
+    </tool>
+  </toolOutput>
+  <statistics fitsExecutionTime="2565">
+    <tool toolname="MediaInfo" toolversion="22.09" status="did not run" />
+    <tool toolname="OIS Audio Information" toolversion="0.1" status="did not run" />
+    <tool toolname="ADL Tool" toolversion="0.1" status="did not run" />
+    <tool toolname="Droid" toolversion="6.5.2" executionTime="999" />
+    <tool toolname="file utility" toolversion="5.43" executionTime="1976" />
+    <tool toolname="OIS File Information" toolversion="1.0" executionTime="476" />
+    <tool toolname="Exiftool" toolversion="12.50" executionTime="2007" />
+    <tool toolname="Tika" toolversion="2.6.0" executionTime="885" />
+    <tool toolname="Jhove" toolversion="1.26.1" executionTime="2391" />
+    <tool toolname="OIS XML Metadata" toolversion="0.2" status="did not run" />
+    <tool toolname="NLNZ Metadata Extractor" toolversion="3.6GA" status="did not run" />
+  </statistics>
+</fits>

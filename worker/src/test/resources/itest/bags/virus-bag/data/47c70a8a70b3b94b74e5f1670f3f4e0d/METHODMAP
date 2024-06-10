@@ -1,0 +1,7 @@
+
+<fmm:MethodMap xmlns:fmm="http://fedora.comm.nsdlib.org/service/methodmap" name="Fedora MethodMap for Simple Image BDef">
+          <fmm:Method operationName="getThumbnail"></fmm:Method>
+          <fmm:Method operationName="getMedium"></fmm:Method>
+          <fmm:Method operationName="getHigh"></fmm:Method>
+          <fmm:Method operationName="getVeryHigh"></fmm:Method>
+        </fmm:MethodMap>

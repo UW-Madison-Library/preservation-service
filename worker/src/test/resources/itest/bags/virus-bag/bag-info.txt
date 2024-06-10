@@ -1,0 +1,7 @@
+Source-Organization: University of Wisconsin - Madison
+Organization-Address: <address>
+Contact-Name: <contact name>
+Contact-Phone: <contact phone>
+Contact-Email: <contact email>
+Bagging-Date: 2018-11-20
+External-Identifier: bag-1542731791486

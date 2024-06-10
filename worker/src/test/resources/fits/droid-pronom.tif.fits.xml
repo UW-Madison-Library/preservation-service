@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fits xmlns="http://hul.harvard.edu/ois/xml/ns/fits/fits_output" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd" version="1.6.0" timestamp="3/15/23, 6:19 PM">
+  <identification status="SINGLE_RESULT">
+    <identity format="TIFF EXIF" mimetype="image/tiff" toolname="FITS" toolversion="1.6.0">
+      <tool toolname="Exiftool" toolversion="12.50" />
+    </identity>
+  </identification>
+  <fileinfo>
+    <filepath toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">/preservation/image.tif</filepath>
+    <filename toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">image.tif</filename>
+    <size toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">4900436</size>
+    <md5checksum toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">36042d5016c38a4238e8b21d6bfcc022</md5checksum>
+    <fslastmodified toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">1678895494000</fslastmodified>
+    <lastmodified toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">2019-09-20T13:34:37</lastmodified>
+    <created toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">2005-01-11T18:54:09Z</created>
+    <creatingApplicationName toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">Adobe Photoshop CS6 (Macintosh)</creatingApplicationName>
+  </fileinfo>
+  <filestatus />
+  <metadata>
+    <image>
+      <compressionScheme toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">Uncompressed</compressionScheme>
+      <imageWidth toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">1619</imageWidth>
+      <imageHeight toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">1005</imageHeight>
+      <colorSpace toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">RGB</colorSpace>
+      <iccProfileName toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">Adobe RGB (1998)</iccProfileName>
+      <iccProfileVersion toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">2.1.0</iccProfileVersion>
+      <orientation toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">normal*</orientation>
+      <samplingFrequencyUnit toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">in.</samplingFrequencyUnit>
+      <xSamplingFrequency toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">300</xSamplingFrequency>
+      <ySamplingFrequency toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">300</ySamplingFrequency>
+      <bitsPerSample toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">8 8 8</bitsPerSample>
+      <samplesPerPixel toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">3</samplesPerPixel>
+      <scanningSoftwareName toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">Adobe Photoshop CS6 (Macintosh)</scanningSoftwareName>
+      <exifVersion toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">0221</exifVersion>
+    </image>
+  </metadata>
+  <toolOutput>
+    <tool name="Droid" version="6.5.2">
+      <results xmlns="">
+        <result>
+          <filePuid>fmt/353</filePuid>
+          <formatName>Tagged Image File Format</formatName>
+          <mimeType>image/tiff</mimeType>
+          <version>null</version>
+        </result>
+      </results>
+    </tool>
+    <tool name="OIS File Information" version="1.0">
+      <fits xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd">
+        <fileinfo>
+          <filepath>/preservation/image.tif</filepath>
+          <filename>image.tif</filename>
+          <size>4900436</size>
+          <md5checksum>36042d5016c38a4238e8b21d6bfcc022</md5checksum>
+          <fslastmodified>1678895494000</fslastmodified>
+        </fileinfo>
+      </fits>
+    </tool>
+    <tool name="Exiftool" version="12.50">
+      <exiftool xmlns="">
+        <ExifToolVersion>12.50</ExifToolVersion>
+        <FileName>image.tif</FileName>
+        <Directory>.</Directory>
+        <FileSize>4.9 MB</FileSize>
+        <FileModifyDate>2023:03:15 15:51:34+00:00</FileModifyDate>
+        <FileAccessDate>2023:03:15 18:14:31+00:00</FileAccessDate>
+        <FileInodeChangeDate>2023:03:15 18:13:49+00:00</FileInodeChangeDate>
+        <FilePermissions>-rw-r--r--</FilePermissions>
+        <FileType>TIFF</FileType>
+        <FileTypeExtension>tif</FileTypeExtension>
+        <MIMEType>image/tiff</MIMEType>
+        <ExifByteOrder>Little-endian (Intel, II)</ExifByteOrder>
+        <SubfileType>Full-resolution image</SubfileType>
+        <ImageWidth>1619</ImageWidth>
+        <ImageHeight>1005</ImageHeight>
+        <BitsPerSample>8 8 8</BitsPerSample>
+        <Compression>Uncompressed</Compression>
+        <PhotometricInterpretation>RGB</PhotometricInterpretation>
+        <StripOffsets>19092</StripOffsets>
+        <Orientation>Horizontal (normal)</Orientation>
+        <SamplesPerPixel>3</SamplesPerPixel>
+        <RowsPerStrip>1005</RowsPerStrip>
+        <StripByteCounts>4881285</StripByteCounts>
+        <XResolution>300</XResolution>
+        <YResolution>300</YResolution>
+        <PlanarConfiguration>Chunky</PlanarConfiguration>
+        <ResolutionUnit>inches</ResolutionUnit>
+        <Software>Adobe Photoshop CS6 (Macintosh)</Software>
+        <ModifyDate>2019:09:20 13:34:37</ModifyDate>
+        <XMPToolkit>Adobe XMP Core 5.3-c011 66.145661, 2012/02/06-14:56:27</XMPToolkit>
+        <LegacyIPTCDigest>00000000000000000000000000000001</LegacyIPTCDigest>
+        <ColorMode>RGB</ColorMode>
+        <ICCProfileName>Adobe RGB (1998)</ICCProfileName>
+        <CreateDate>2005:01:11 12:54:09-06:00</CreateDate>
+        <ModifyDate>2019:09:20 13:34:37-05:00</ModifyDate>
+        <MetadataDate>2019:09:20 13:34:37-05:00</MetadataDate>
+        <CreatorTool>Adobe Photoshop CS Windows</CreatorTool>
+        <DerivedFromInstanceID>xmp.iid:3B0ABF0F0A206811822A9314B64C967C</DerivedFromInstanceID>
+        <DerivedFromDocumentID>adobe:docid:photoshop:b148cae0-6401-11d9-a241-c339b30de64b</DerivedFromDocumentID>
+        <DerivedFromOriginalDocumentID>adobe:docid:photoshop:b148cae0-6401-11d9-a241-c339b30de64b</DerivedFromOriginalDocumentID>
+        <DocumentID>adobe:docid:photoshop:b148cae0-6401-11d9-a241-c339b30de64b</DocumentID>
+        <InstanceID>xmp.iid:3C0ABF0F0A206811822A9314B64C967C</InstanceID>
+        <OriginalDocumentID>adobe:docid:photoshop:b148cae0-6401-11d9-a241-c339b30de64b</OriginalDocumentID>
+        <HistoryAction>saved, converted, derived, saved</HistoryAction>
+        <HistoryInstanceID>xmp.iid:3B0ABF0F0A206811822A9314B64C967C, xmp.iid:3C0ABF0F0A206811822A9314B64C967C</HistoryInstanceID>
+        <HistoryWhen>2019:09:20 13:34:37-05:00, 2019:09:20 13:34:37-05:00</HistoryWhen>
+        <HistorySoftwareAgent>Adobe Photoshop CS6 (Macintosh), Adobe Photoshop CS6 (Macintosh)</HistorySoftwareAgent>
+        <HistoryChanged>/, /</HistoryChanged>
+        <HistoryParameters>from image/jpeg to image/tiff, converted from image/jpeg to image/tiff</HistoryParameters>
+        <Format>image/tiff</Format>
+        <Marked>False</Marked>
+        <CurrentIPTCDigest>2dc772f7190fb7db5b68a9d4efef9206</CurrentIPTCDigest>
+        <CodedCharacterSet>UTF8</CodedCharacterSet>
+        <ApplicationRecordVersion>1</ApplicationRecordVersion>
+        <IPTCDigest>2dc772f7190fb7db5b68a9d4efef9206</IPTCDigest>
+        <XResolution>300</XResolution>
+        <DisplayedUnitsX>inches</DisplayedUnitsX>
+        <YResolution>300</YResolution>
+        <DisplayedUnitsY>inches</DisplayedUnitsY>
+        <PrintStyle>Centered</PrintStyle>
+        <PrintPosition>0 0</PrintPosition>
+        <PrintScale>1</PrintScale>
+        <GlobalAngle>120</GlobalAngle>
+        <GlobalAltitude>30</GlobalAltitude>
+        <CopyrightFlag>False</CopyrightFlag>
+        <SlicesGroupName>CLP-W0078</SlicesGroupName>
+        <NumSlices>1</NumSlices>
+        <PixelAspectRatio>1</PixelAspectRatio>
+        <HasRealMergedData>Yes</HasRealMergedData>
+        <WriterName>Adobe Photoshop</WriterName>
+        <ReaderName>Adobe Photoshop CS6</ReaderName>
+        <ExifVersion>0221</ExifVersion>
+        <ColorSpace>Uncalibrated</ColorSpace>
+        <ExifImageWidth>1619</ExifImageWidth>
+        <ExifImageHeight>1005</ExifImageHeight>
+        <ProfileCMMType>Adobe Systems Inc.</ProfileCMMType>
+        <ProfileVersion>2.1.0</ProfileVersion>
+        <ProfileClass>Display Device Profile</ProfileClass>
+        <ColorSpaceData>RGB</ColorSpaceData>
+        <ProfileConnectionSpace>XYZ</ProfileConnectionSpace>
+        <ProfileDateTime>1999:06:03 00:00:00</ProfileDateTime>
+        <ProfileFileSignature>acsp</ProfileFileSignature>
+        <PrimaryPlatform>Apple Computer Inc.</PrimaryPlatform>
+        <CMMFlags>Not Embedded, Independent</CMMFlags>
+        <DeviceManufacturer>none</DeviceManufacturer>
+        <DeviceAttributes>Reflective, Glossy, Positive, Color</DeviceAttributes>
+        <RenderingIntent>Media-Relative Colorimetric</RenderingIntent>
+        <ConnectionSpaceIlluminant>0.9642 1 0.82491</ConnectionSpaceIlluminant>
+        <ProfileCreator>Adobe Systems Inc.</ProfileCreator>
+        <ProfileID>0</ProfileID>
+        <ProfileCopyright>Copyright 1999 Adobe Systems Incorporated</ProfileCopyright>
+        <ProfileDescription>Adobe RGB (1998)</ProfileDescription>
+        <MediaWhitePoint>0.95045 1 1.08905</MediaWhitePoint>
+        <MediaBlackPoint>0 0 0</MediaBlackPoint>
+        <RedTRC>(Binary data 14 bytes, use -b option to extract)</RedTRC>
+        <GreenTRC>(Binary data 14 bytes, use -b option to extract)</GreenTRC>
+        <BlueTRC>(Binary data 14 bytes, use -b option to extract)</BlueTRC>
+        <RedMatrixColumn>0.60974 0.31111 0.01947</RedMatrixColumn>
+        <GreenMatrixColumn>0.20528 0.62567 0.06087</GreenMatrixColumn>
+        <BlueMatrixColumn>0.14919 0.06322 0.74457</BlueMatrixColumn>
+        <ImageSize>1619x1005</ImageSize>
+        <Megapixels>1.6</Megapixels>
+      </exiftool>
+    </tool>
+  </toolOutput>
+  <statistics fitsExecutionTime="2080">
+    <tool toolname="MediaInfo" toolversion="22.09" status="did not run" />
+    <tool toolname="OIS Audio Information" toolversion="0.1" status="did not run" />
+    <tool toolname="ADL Tool" toolversion="0.1" status="did not run" />
+    <tool toolname="Droid" toolversion="6.5.2" executionTime="482" />
+    <tool toolname="file utility" toolversion="5.43" status="did not run" />
+    <tool toolname="OIS File Information" toolversion="1.0" executionTime="231" />
+    <tool toolname="Exiftool" toolversion="12.50" executionTime="1906" />
+    <tool toolname="Tika" toolversion="2.6.0" status="did not run" />
+    <tool toolname="Jhove" toolversion="1.26.1" status="did not run" />
+    <tool toolname="OIS XML Metadata" toolversion="0.2" status="did not run" />
+    <tool toolname="NLNZ Metadata Extractor" toolversion="3.6GA" status="did not run" />
+  </statistics>
+</fits>

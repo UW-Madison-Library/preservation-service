@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<premis xmlns="http://www.loc.gov/premis/v3" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/premis/v3 https://www.loc.gov/standards/premis/v3/premis-v3-0.xsd">
+	<object xsi:type="intellectualEntity">
+		<objectIdentifier>
+			<objectIdentifierType>external</objectIdentifierType>
+			<objectIdentifierValue>o1</objectIdentifierValue>
+		</objectIdentifier>
+		<objectIdentifier>
+			<objectIdentifierType>vault</objectIdentifierType>
+			<objectIdentifierValue>test-vault</objectIdentifierValue>
+		</objectIdentifier>
+		<relationship>
+			<relationshipType>structural</relationshipType>
+			<relationshipSubType>is Represented By</relationshipSubType>
+			<relatedObjectIdentifier>
+				<relatedObjectIdentifierType>version</relatedObjectIdentifierType>
+				<relatedObjectIdentifierValue>1</relatedObjectIdentifierValue>
+			</relatedObjectIdentifier>
+		</relationship>
+		<linkingEventIdentifier>
+			<linkingEventIdentifierType>uuid</linkingEventIdentifierType>
+			<linkingEventIdentifierValue>2</linkingEventIdentifierValue>
+		</linkingEventIdentifier>
+		<linkingEventIdentifier>
+			<linkingEventIdentifierType>uuid</linkingEventIdentifierType>
+			<linkingEventIdentifierValue>3</linkingEventIdentifierValue>
+		</linkingEventIdentifier>
+		<linkingEventIdentifier>
+			<linkingEventIdentifierType>uuid</linkingEventIdentifierType>
+			<linkingEventIdentifierValue>4</linkingEventIdentifierValue>
+		</linkingEventIdentifier>
+		<linkingEventIdentifier>
+			<linkingEventIdentifierType>uuid</linkingEventIdentifierType>
+			<linkingEventIdentifierValue>6</linkingEventIdentifierValue>
+		</linkingEventIdentifier>
+		<linkingEventIdentifier>
+			<linkingEventIdentifierType>uuid</linkingEventIdentifierType>
+			<linkingEventIdentifierValue>7</linkingEventIdentifierValue>
+		</linkingEventIdentifier>
+		<linkingEventIdentifier>
+			<linkingEventIdentifierType>uuid</linkingEventIdentifierType>
+			<linkingEventIdentifierValue>8</linkingEventIdentifierValue>
+		</linkingEventIdentifier>
+	</object>
+	<object xsi:type="representation">
+		<objectIdentifier>
+			<objectIdentifierType>version</objectIdentifierType>
+			<objectIdentifierValue>1</objectIdentifierValue>
+		</objectIdentifier>
+		<relationship>
+			<relationshipType>structural</relationshipType>
+			<relationshipSubType>has Part</relationshipSubType>
+			<relatedObjectIdentifier>
+				<relatedObjectIdentifierType>local path</relatedObjectIdentifierType>
+				<relatedObjectIdentifierValue>BIB0</relatedObjectIdentifierValue>
+			</relatedObjectIdentifier>
+		</relationship>
+		<relationship>
+			<relationshipType>structural</relationshipType>
+			<relationshipSubType>has Part</relationshipSubType>
+			<relatedObjectIdentifier>
+				<relatedObjectIdentifierType>local path</relatedObjectIdentifierType>
+				<relatedObjectIdentifierValue>MASTER0</relatedObjectIdentifierValue>
+			</relatedObjectIdentifier>
+		</relationship>
+		<linkingEventIdentifier>
+			<linkingEventIdentifierType>uuid</linkingEventIdentifierType>
+			<linkingEventIdentifierValue>1</linkingEventIdentifierValue>
+		</linkingEventIdentifier>
+		<linkingEventIdentifier>
+			<linkingEventIdentifierType>uuid</linkingEventIdentifierType>
+			<linkingEventIdentifierValue>2</linkingEventIdentifierValue>
+		</linkingEventIdentifier>
+		<linkingEventIdentifier>
+			<linkingEventIdentifierType>uuid</linkingEventIdentifierType>
+			<linkingEventIdentifierValue>3</linkingEventIdentifierValue>
+		</linkingEventIdentifier>
+		<linkingEventIdentifier>
+			<linkingEventIdentifierType>uuid</linkingEventIdentifierType>
+			<linkingEventIdentifierValue>4</linkingEventIdentifierValue>
+		</linkingEventIdentifier>
+		<linkingEventIdentifier>
+			<linkingEventIdentifierType>uuid</linkingEventIdentifierType>
+			<linkingEventIdentifierValue>5</linkingEventIdentifierValue>
+		</linkingEventIdentifier>
+	</object>
+	<object xsi:type="file">
+		<objectIdentifier>
+			<objectIdentifierType>local path</objectIdentifierType>
+			<objectIdentifierValue>BIB0</objectIdentifierValue>
+		</objectIdentifier>
+		<objectCharacteristics>
+			<fixity>
+				<messageDigestAlgorithm>SHA-256</messageDigestAlgorithm>
+				<messageDigest>7285b8eecb8a892b835af8959f0a481f56932500954771063d75c8e09046fa80</messageDigest>
+			</fixity>
+			<size>50</size>
+			<format>
+				<formatRegistry>
+					<formatRegistryName valueURI="http://www.nationalarchives.gov.uk/pronom">PRONOM</formatRegistryName>
+					<formatRegistryKey>fmt/101</formatRegistryKey>
+				</formatRegistry>
+			</format>
+			<format>
+				<formatDesignation>
+					<formatName>text/xml</formatName>
+				</formatDesignation>
+			</format>
+		</objectCharacteristics>
+	</object>
+	<object xsi:type="file">
+		<objectIdentifier>
+			<objectIdentifierType>local path</objectIdentifierType>
+			<objectIdentifierValue>MASTER0</objectIdentifierValue>
+		</objectIdentifier>
+		<objectCharacteristics>
+			<fixity>
+				<messageDigestAlgorithm>SHA-256</messageDigestAlgorithm>
+				<messageDigest>2f4606a4f210dc9707e35aa4cf367e402b4214f0658bd92c777b7bbfbca5663f</messageDigest>
+			</fixity>
+			<size>100</size>
+			<format>
+				<formatDesignation>
+					<formatName>image/tiff</formatName>
+				</formatDesignation>
+			</format>
+		</objectCharacteristics>
+	</object>
+	<event>
+		<eventIdentifier>
+			<eventIdentifierType>uuid</eventIdentifierType>
+			<eventIdentifierValue>1</eventIdentifierValue>
+		</eventIdentifier>
+		<eventType valueURI="http://id.loc.gov/vocabulary/preservation/eventType/app">appraisal</eventType>
+		<eventDateTime></eventDateTime>
+		<eventOutcomeInformation>
+			<eventOutcome>approved</eventOutcome>
+		</eventOutcomeInformation>
+		<linkingAgentIdentifier>
+			<linkingAgentIdentifierType>username</linkingAgentIdentifierType>
+			<linkingAgentIdentifierValue>fedora-object-preserver</linkingAgentIdentifierValue>
+			<linkingAgentRole valueURI="http://id.loc.gov/vocabulary/preservation/eventRelatedAgentRole/aut">authorizer</linkingAgentRole>
+		</linkingAgentIdentifier>
+	</event>
+	<event>
+		<eventIdentifier>
+			<eventIdentifierType>uuid</eventIdentifierType>
+			<eventIdentifierValue>2</eventIdentifierValue>
+		</eventIdentifier>
+		<eventType valueURI="http://id.loc.gov/vocabulary/preservation/eventType/mem">metadata modification</eventType>
+		<eventDateTime></eventDateTime>
+		<eventOutcomeInformation>
+			<eventOutcome>success</eventOutcome>
+		</eventOutcomeInformation>
+		<linkingAgentIdentifier>
+			<linkingAgentIdentifierType>local</linkingAgentIdentifierType>
+			<linkingAgentIdentifierValue>preservation-service-SNAPSHOT</linkingAgentIdentifierValue>
+			<linkingAgentRole valueURI="http://id.loc.gov/vocabulary/preservation/eventRelatedAgentRole/imp">implementer</linkingAgentRole>
+		</linkingAgentIdentifier>
+	</event>
+	<event>
+		<eventIdentifier>
+			<eventIdentifierType>uuid</eventIdentifierType>
+			<eventIdentifierValue>3</eventIdentifierValue>
+		</eventIdentifier>
+		<eventType valueURI="http://id.loc.gov/vocabulary/preservation/eventType/cre">creation</eventType>
+		<eventDateTime></eventDateTime>
+		<eventOutcomeInformation>
+			<eventOutcome>success</eventOutcome>
+			<eventOutcomeDetail>
+				<eventOutcomeDetailNote>Created version 1</eventOutcomeDetailNote>
+			</eventOutcomeDetail>
+		</eventOutcomeInformation>
+		<linkingAgentIdentifier>
+			<linkingAgentIdentifierType>local</linkingAgentIdentifierType>
+			<linkingAgentIdentifierValue>preservation-service-SNAPSHOT</linkingAgentIdentifierValue>
+			<linkingAgentRole valueURI="http://id.loc.gov/vocabulary/preservation/eventRelatedAgentRole/imp">implementer</linkingAgentRole>
+		</linkingAgentIdentifier>
+	</event>
+	<event>
+		<eventIdentifier>
+			<eventIdentifierType>uuid</eventIdentifierType>
+			<eventIdentifierValue>4</eventIdentifierValue>
+		</eventIdentifier>
+		<eventType valueURI="http://id.loc.gov/vocabulary/preservation/eventType/rep">replication</eventType>
+		<eventDateTime></eventDateTime>
+		<eventOutcomeInformation>
+			<eventOutcome>success</eventOutcome>
+			<eventOutcomeDetail>
+				<eventOutcomeDetailNote>Replicated OCFL version v1 to GLACIER</eventOutcomeDetailNote>
+			</eventOutcomeDetail>
+		</eventOutcomeInformation>
+		<linkingAgentIdentifier>
+			<linkingAgentIdentifierType>local</linkingAgentIdentifierType>
+			<linkingAgentIdentifierValue>preservation-service-SNAPSHOT</linkingAgentIdentifierValue>
+			<linkingAgentRole valueURI="http://id.loc.gov/vocabulary/preservation/eventRelatedAgentRole/imp">implementer</linkingAgentRole>
+		</linkingAgentIdentifier>
+	</event>
+	<event>
+		<eventIdentifier>
+			<eventIdentifierType>uuid</eventIdentifierType>
+			<eventIdentifierValue>5</eventIdentifierValue>
+		</eventIdentifier>
+		<eventType valueURI="http://id.loc.gov/vocabulary/preservation/eventType/ine">ingestion end</eventType>
+		<eventDateTime></eventDateTime>
+		<eventOutcomeInformation>
+			<eventOutcome>success</eventOutcome>
+		</eventOutcomeInformation>
+		<linkingAgentIdentifier>
+			<linkingAgentIdentifierType>local</linkingAgentIdentifierType>
+			<linkingAgentIdentifierValue>preservation-service-SNAPSHOT</linkingAgentIdentifierValue>
+			<linkingAgentRole valueURI="http://id.loc.gov/vocabulary/preservation/eventRelatedAgentRole/imp">implementer</linkingAgentRole>
+		</linkingAgentIdentifier>
+	</event>
+	<event>
+		<eventIdentifier>
+			<eventIdentifierType>uuid</eventIdentifierType>
+			<eventIdentifierValue>6</eventIdentifierValue>
+		</eventIdentifier>
+		<eventType valueURI="http://id.loc.gov/vocabulary/preservation/eventType/mem">metadata modification</eventType>
+		<eventDateTime></eventDateTime>
+		<eventOutcomeInformation>
+			<eventOutcome>success</eventOutcome>
+		</eventOutcomeInformation>
+		<linkingAgentIdentifier>
+			<linkingAgentIdentifierType>local</linkingAgentIdentifierType>
+			<linkingAgentIdentifierValue>preservation-service-SNAPSHOT</linkingAgentIdentifierValue>
+			<linkingAgentRole valueURI="http://id.loc.gov/vocabulary/preservation/eventRelatedAgentRole/imp">implementer</linkingAgentRole>
+		</linkingAgentIdentifier>
+	</event>
+	<event>
+		<eventIdentifier>
+			<eventIdentifierType>uuid</eventIdentifierType>
+			<eventIdentifierValue>7</eventIdentifierValue>
+		</eventIdentifier>
+		<eventType valueURI="http://id.loc.gov/vocabulary/preservation/eventType/mod">modification</eventType>
+		<eventDateTime></eventDateTime>
+		<eventOutcomeInformation>
+			<eventOutcome>success</eventOutcome>
+			<eventOutcomeDetail>
+				<eventOutcomeDetailNote>Created version 2</eventOutcomeDetailNote>
+			</eventOutcomeDetail>
+		</eventOutcomeInformation>
+		<linkingAgentIdentifier>
+			<linkingAgentIdentifierType>local</linkingAgentIdentifierType>
+			<linkingAgentIdentifierValue>preservation-service-SNAPSHOT</linkingAgentIdentifierValue>
+			<linkingAgentRole valueURI="http://id.loc.gov/vocabulary/preservation/eventRelatedAgentRole/imp">implementer</linkingAgentRole>
+		</linkingAgentIdentifier>
+	</event>
+	<event>
+		<eventIdentifier>
+			<eventIdentifierType>uuid</eventIdentifierType>
+			<eventIdentifierValue>8</eventIdentifierValue>
+		</eventIdentifier>
+		<eventType valueURI="http://id.loc.gov/vocabulary/preservation/eventType/rep">replication</eventType>
+		<eventDateTime></eventDateTime>
+		<eventOutcomeInformation>
+			<eventOutcome>success</eventOutcome>
+			<eventOutcomeDetail>
+				<eventOutcomeDetailNote>Replicated OCFL version v2 to GLACIER</eventOutcomeDetailNote>
+			</eventOutcomeDetail>
+		</eventOutcomeInformation>
+		<linkingAgentIdentifier>
+			<linkingAgentIdentifierType>local</linkingAgentIdentifierType>
+			<linkingAgentIdentifierValue>preservation-service-SNAPSHOT</linkingAgentIdentifierValue>
+			<linkingAgentRole valueURI="http://id.loc.gov/vocabulary/preservation/eventRelatedAgentRole/imp">implementer</linkingAgentRole>
+		</linkingAgentIdentifier>
+	</event>
+</premis>

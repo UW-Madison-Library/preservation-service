@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fits xmlns="http://hul.harvard.edu/ois/xml/ns/fits/fits_output" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd" version="1.6.0" timestamp="3/7/23, 6:32 PM">
+  <identification>
+    <identity format="Extensible Markup Language" mimetype="text/xml" toolname="FITS" toolversion="1.6.0">
+      <tool toolname="Droid" toolversion="6.5.2" />
+      <tool toolname="Tika" toolversion="2.6.0" />
+      <tool toolname="Jhove" toolversion="1.26.1" />
+      <version toolname="Droid" toolversion="6.5.2">1.0</version>
+      <externalIdentifier toolname="Droid" toolversion="6.5.2" type="puid">fmt/101</externalIdentifier>
+    </identity>
+  </identification>
+  <fileinfo>
+    <filepath toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">/preservation/invalid.xml</filepath>
+    <filename toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">invalid.xml</filename>
+    <size toolname="OIS File Information" toolversion="1.0">92</size>
+    <md5checksum toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">dddcd2e7524b4cfdd26515015c090985</md5checksum>
+    <fslastmodified toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">1678213600000</fslastmodified>
+  </fileinfo>
+  <filestatus>
+    <well-formed toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">false</well-formed>
+    <valid toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">false</valid>
+    <message toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">SAXParseException Content is not allowed in prolog. Line = 2, Column = 42. severity=error</message>
+  </filestatus>
+  <metadata>
+    <text>
+      <markupBasis toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">XML</markupBasis>
+    </text>
+  </metadata>
+  <toolOutput>
+    <tool name="Droid" version="6.5.2">
+      <results xmlns="">
+        <result>
+          <filePuid>fmt/101</filePuid>
+          <formatName>Extensible Markup Language</formatName>
+          <mimeType>application/xml, text/xml</mimeType>
+          <version>1.0</version>
+        </result>
+      </results>
+    </tool>
+    <tool name="OIS File Information" version="1.0">
+      <fits xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd">
+        <fileinfo>
+          <filepath>/preservation/invalid.xml</filepath>
+          <filename>invalid.xml</filename>
+          <size>92</size>
+          <md5checksum>dddcd2e7524b4cfdd26515015c090985</md5checksum>
+          <fslastmodified>1678213600000</fslastmodified>
+        </fileinfo>
+      </fits>
+    </tool>
+    <tool name="Tika" version="2.6.0">
+      <metadata xmlns="">
+        <field name="X-TIKA:Parsed-By">
+          <value>org.apache.tika.parser.DefaultParser</value>
+          <value>org.apache.tika.parser.xml.DcXMLParser</value>
+        </field>
+        <field name="X-TIKA:Parsed-By-Full-Set">
+          <value>org.apache.tika.parser.DefaultParser</value>
+          <value>org.apache.tika.parser.xml.DcXMLParser</value>
+        </field>
+        <field name="resourceName">
+          <value>invalid.xml</value>
+        </field>
+        <field name="Content-Length">
+          <value>92</value>
+        </field>
+        <field name="Content-Type">
+          <value>application/xml</value>
+        </field>
+      </metadata>
+    </tool>
+    <tool name="Jhove" version="1.26.1">
+      <repInfo xmlns="" uri="/preservation/invalid.xml">
+        <reportingModule release="1.5.2" date="2022-04-22">XML-hul</reportingModule>
+        <lastModified>2023-03-07T18:26:40+00:00</lastModified>
+        <size>92</size>
+        <format>XML</format>
+        <status>Not well-formed</status>
+        <messages>
+          <message subMessage="Content is not allowed in prolog. Line = 2, Column = 42." severity="error" id="XML-HUL-1">SAXParseException</message>
+        </messages>
+        <mimeType>text/xml</mimeType>
+      </repInfo>
+    </tool>
+  </toolOutput>
+  <statistics fitsExecutionTime="1141">
+    <tool toolname="MediaInfo" toolversion="22.09" status="did not run" />
+    <tool toolname="OIS Audio Information" toolversion="0.1" status="did not run" />
+    <tool toolname="ADL Tool" toolversion="0.1" status="did not run" />
+    <tool toolname="Droid" toolversion="6.5.2" executionTime="128" />
+    <tool toolname="file utility" toolversion="5.43" status="did not run" />
+    <tool toolname="OIS File Information" toolversion="1.0" executionTime="109" />
+    <tool toolname="Exiftool" toolversion="12.50" status="did not run" />
+    <tool toolname="Tika" toolversion="2.6.0" executionTime="246" />
+    <tool toolname="Jhove" toolversion="1.26.1" executionTime="1040" />
+    <tool toolname="OIS XML Metadata" toolversion="0.2" status="failed" />
+    <tool toolname="NLNZ Metadata Extractor" toolversion="3.6GA" status="did not run" />
+  </statistics>
+</fits>

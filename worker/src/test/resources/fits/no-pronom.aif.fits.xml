@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fits xmlns="http://hul.harvard.edu/ois/xml/ns/fits/fits_output" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd" version="1.6.0" timestamp="3/9/23, 4:07 PM">
+  <identification status="SINGLE_RESULT">
+    <identity format="AIFF AIFF-C" mimetype="audio/x-aiff" toolname="FITS" toolversion="1.6.0">
+      <tool toolname="Jhove" toolversion="1.26.1" />
+    </identity>
+  </identification>
+  <fileinfo>
+    <filepath toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">/preservation/test.aif</filepath>
+    <filename toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">test.aif</filename>
+    <size toolname="OIS File Information" toolversion="1.0">387703680</size>
+    <md5checksum toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">1a3361a10dac7c77071575a13f65fd0e</md5checksum>
+    <fslastmodified toolname="OIS File Information" toolversion="1.0" status="SINGLE_RESULT">1678378029279</fslastmodified>
+  </fileinfo>
+  <filestatus>
+    <well-formed toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">true</well-formed>
+    <valid toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">true</valid>
+  </filestatus>
+  <metadata>
+    <audio>
+      <duration toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">0:36:38</duration>
+      <bitDepth toolname="Exiftool" toolversion="12.50">16</bitDepth>
+      <numSamples toolname="Exiftool" toolversion="12.50" status="SINGLE_RESULT">96925332</numSamples>
+      <sampleRate toolname="Exiftool" toolversion="12.50">44100</sampleRate>
+      <channels toolname="Exiftool" toolversion="12.50">2</channels>
+      <audioDataEncoding toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">PCM 16-bit twos-complement little-endian</audioDataEncoding>
+      <offset toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">2352</offset>
+      <byteOrder toolname="Jhove" toolversion="1.26.1" status="SINGLE_RESULT">LITTLE_ENDIAN</byteOrder>
+    </audio>
+  </metadata>
+  <statistics fitsExecutionTime="2865">
+    <tool toolname="MediaInfo" toolversion="22.09" status="did not run" />
+    <tool toolname="OIS Audio Information" toolversion="0.1" status="did not run" />
+    <tool toolname="ADL Tool" toolversion="0.1" status="did not run" />
+    <tool toolname="Droid" toolversion="6.5.2" status="did not run" />
+    <tool toolname="file utility" toolversion="5.43" executionTime="2097" />
+    <tool toolname="OIS File Information" toolversion="1.0" executionTime="2788" />
+    <tool toolname="Exiftool" toolversion="12.50" executionTime="1931" />
+    <tool toolname="Tika" toolversion="2.6.0" status="did not run" />
+    <tool toolname="Jhove" toolversion="1.26.1" executionTime="1891" />
+    <tool toolname="OIS XML Metadata" toolversion="0.2" status="did not run" />
+    <tool toolname="NLNZ Metadata Extractor" toolversion="3.6GA" status="did not run" />
+  </statistics>
+</fits>
