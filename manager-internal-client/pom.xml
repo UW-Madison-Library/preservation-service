@@ -6,13 +6,7 @@
     <packaging>jar</packaging>
     <name>preservation-service-manager-internal-client</name>
     <version>1.1.0-SNAPSHOT</version>
-    <url>https://github.com/openapitools/openapi-generator</url>
     <description>Preservation Service Manager Internal Client</description>
-    <scm>
-        <connection>scm:git:git@github.com:openapitools/openapi-generator.git</connection>
-        <developerConnection>scm:git:git@github.com:openapitools/openapi-generator.git</developerConnection>
-        <url>https://github.com/openapitools/openapi-generator</url>
-    </scm>
     <parent>
         <groupId>edu.wisc.library.sdg</groupId>
         <artifactId>preservation-service-parent</artifactId>
@@ -21,20 +15,11 @@
 
     <licenses>
         <license>
-            <name>Unlicense</name>
-            <url>http://unlicense.org</url>
+            <name>Apache-2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
-
-    <developers>
-        <developer>
-            <name>OpenAPI-Generator Contributors</name>
-            <email>team@openapitools.org</email>
-            <organization>OpenAPITools.org</organization>
-            <organizationUrl>http://openapitools.org</organizationUrl>
-        </developer>
-    </developers>
 
     <build>
         <plugins>
